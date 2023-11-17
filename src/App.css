@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  color: black;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+html,
+body {
+  /* border: 1px solid blue; */
+  /* overflow-x: hided; */
+}
+#default-sidebar a {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  width: 100%;
+  padding-left: 2.1rem;
+  font-size: x-small;
+  color: white;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+#default-sidebar a.active-link {
+  color: #fbb03b;
+  background-image: linear-gradient(to right, #fbb03b, transparent);
+}
+#default-sidebar a:hover {
+  color: #fbb03b;
+}
