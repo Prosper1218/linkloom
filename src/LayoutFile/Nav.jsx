@@ -39,8 +39,8 @@ const Nav = () => {
                   </button>
                </div>
                <ul className="font-medium mt-8 space-y-20">
-                  <div className=" flex row justify-center gap-1 mt-0 items-center">
-                     <img src={logo} alt={logo} className="w-[1.15rem] h-[1.1rem] flex-none" /> <p className="text-white font-thin font-nunito leading-none">3MM</p>
+                  <div className=" flex row justify-center gap-1 mt-0 items-center h-auto overflow-y-hidden ">
+                     <img src={logo} alt={logo} className="w-[1.15rem] h-[1.1rem] flex-none" /> <p className="text-white font-thin font-nunito leading-none text-sm overflow-y-hidden">3MM</p>
                   </div>
                   <div className="text-center flex flex-col mt-40 items-center space-y-5">
                      {Links.map((items) => {

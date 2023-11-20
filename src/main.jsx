@@ -8,14 +8,14 @@ import Home from "./Pages/Main/Home.jsx";
 import Profile from "./Pages/Main/Profile/Profile.jsx";
 import Gallery from "./Pages/Main/Gallery.jsx";
 import Settings from "./Pages/Main/Settings.jsx";
-import PLayout from "./Pages/Main/Profile/ProfileLayout/PLayout.jsx";
-import Followers from "./Pages/Main/Profile/ProfileLayout/Followers.jsx";
+import SignUp from "./Pages/Forms/SignUp.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <BrowserRouter>
          <Routes>
             <Route path="/" element={<SignIn />}></Route>
+            <Route path="/SignUp" element={<SignUp />} />
             <Route element={<MainLayout />}>
                <Route path="/Home" element={<Home />} />
                <Route path="/Profile" element={<Profile />} />

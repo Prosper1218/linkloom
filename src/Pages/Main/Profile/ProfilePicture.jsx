@@ -27,7 +27,7 @@ const ProfilePicture = () => {
    return (
       <>
          <img src={CurrentDp} alt="bigdp" className="bg-[#fbb03b] rounded-full w-[100%] h-[100%] object-cover" />
-         <button className="absolute  top-[3.9rem] sm:top-[5.5rem] right-3 bg-[#490057] p-2 rounded-full" onClick={handleclick}>
+         <button className="absolute  top-[3.9rem] sm:top-[5.5rem] right-3 bg-[#A303A0] p-2 rounded-full" onClick={handleclick}>
             <img src={editcamera} alt="" className="w-4" />
          </button>
          <input type="file" name="dp" id="dp" accept="/image*" ref={inputref} className="hidden" onChange={handlechange} />
