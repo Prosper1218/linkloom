@@ -25,7 +25,7 @@ const CoverPhoto = () => {
       fileinput.current.click();
    };
    return (
-      <div className="relative z-10 mt-4 bg-white pb-5 rounded-b-[8px]">
+      <div className="relative z-10 mt-4 bg-white pb-5 rounded-[8px]">
          <div className=" h-[12rem] sm:h-[14rem] w-full object-cover rounded-[8px]">
             <img src={CoverP} alt="coverphoto" className="w-full h-full object-cover z-10" />
          </div>
@@ -40,7 +40,7 @@ const CoverPhoto = () => {
          <div className="">
             <div>
                <div className="object-cover w-[6rem] sm:w-[8rem] h-[6rem] sm:h-[8rem] absolute z-20 top-[7rem] sm:top-[8rem]  ml-3 sm:ml-12">
-                <ProfilePicture/>
+                  <ProfilePicture />
                </div>
             </div>
             <br />

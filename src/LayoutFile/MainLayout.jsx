@@ -11,11 +11,11 @@ const MainLayout = () => {
    return (
       <DpContext.Provider value={{CurrentDp,setCurrentDp, dp}}>
         <div className="min-h-[100vh] flex flex-row max-w-[100%]">
-           <div style={{border: "1px solid red"}}>
+           <div>
               {" "}
               <Nav />
            </div>
-           <div className="px-1 sm:p-4 sm:ml-32 w-full bg-[#F7F7F8]" style={{border: "1px solid red"}}>
+           <div className="px-2 sm:p-4 sm:ml-32 w-full bg-[#F7F7F8]">
               <Outlet />
            </div>
         </div>
