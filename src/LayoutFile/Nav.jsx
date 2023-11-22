@@ -1,12 +1,14 @@
-import {Cross1Icon, HamburgerMenuIcon} from "@radix-ui/react-icons";
-import React, {useState} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {Cross1Icon, ExitIcon, HamburgerMenuIcon} from "@radix-ui/react-icons";
+import React, {useContext, useState} from "react";
+import {Link, NavLink, redirect, useNavigate} from "react-router-dom";
 import logo from "../Images/subtract.png";
 import {Links} from "../Data";
+import {DpContext} from "./MainLayout";
 
 const Nav = () => {
    const [NavActive, setNavActive] = useState(false);
-
+   const {CurrentDp} = useContext(DpContext);
+   const navigate = useNavigate();
    const handlelinkclick = () => {
       {
          NavActive ? setNavActive(false) : null;
@@ -25,7 +27,7 @@ const Nav = () => {
          >
             <HamburgerMenuIcon color="white" />
          </button> */}
-         <Hamburgericon setNav={setNavActive}/>
+         <Hamburgericon setNav={setNavActive} />
 
          <aside
             id="default-sidebar"
@@ -59,6 +61,17 @@ const Nav = () => {
                            </NavLink>
                         );
                      })}
+
+                     <div className="absolute bottom-0 h-32 w-full">
+                        <button onClick={() => navigate("/Profile")} className="w-[1.7rem] h-[1.7rem] object-cover">
+                           <img src={CurrentDp} alt="profile-picture" className="w-full h-full object-cover rounded-full" />
+                        </button>
+                        <div className="">
+                           <button className=" rotate-180" type="button">
+                              <ExitIcon color="white" className=" scale-110 "/>
+                           </button>
+                        </div>
+                     </div>
                   </div>
                </ul>
             </div>
@@ -76,7 +89,7 @@ const Hamburgericon = ({setNav}) => {
             data-drawer-toggle="default-sidebar"
             aria-controls="default-sidebar"
             type="button"
-            className=" items-center p-2 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057] absolute top-1 ml-2"
+            className=" items-center p-1 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057] absolute top-1 ml-2"
          >
             <HamburgerMenuIcon color="white" />
          </button>

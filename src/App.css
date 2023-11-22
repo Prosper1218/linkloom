@@ -3,32 +3,42 @@
 @tailwind utilities;
 
 * {
-  color: black;
-  max-width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  
+   color: black;
+   max-width: 100%;
+   overflow-x: hidden;
+   overflow-y: auto;
 }
 html,
 body {
-  /* border: 1px solid blue; */
-  /* overflow-x: hided; */
+   /* border: 1px solid blue; */
+   /* overflow-x: hided; */
 }
 #default-sidebar a {
-  display: flex;
-  flex-direction: row;
-  gap: 0.3rem;
-  width: 100%;
-  padding-left: 2.3rem;
-  font-size: x-small;
-  color: white;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+   display: flex;
+   flex-direction: row;
+   gap: 0.3rem;
+   width: 100%;
+   padding-left: 2.3rem;
+   font-size: x-small;
+   color: white;
+   padding-top: 0.2rem;
+   padding-bottom: 0.2rem;
 }
 #default-sidebar a.active-link {
-  color: #fbb03b;
-  background-image: linear-gradient(to right, #fbb03b, transparent);
+   color: #fbb03b;
+   background-image: linear-gradient(to right, #fbb03b, transparent);
 }
 #default-sidebar a:hover {
-  color: #fbb03b;
+   color: #fbb03b;
 }
+
+#tabnav a {
+   color: #a303a0;
+   font-size: 70%;
+   padding: 4px 0rem 4px 0rem;
+   outline: none;
+   font-weight: bold;
+}
+/* #tabnav a.active-link{
+  color: red;
+} */
