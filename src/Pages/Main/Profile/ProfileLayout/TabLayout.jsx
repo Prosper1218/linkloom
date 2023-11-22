@@ -1,13 +1,11 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+import React from "react";
 
-const PLayout = () => {
-  return (
-    <div>
-     nav
-     <Outlet/>
-    </div>
-  )
-}
+const TabLayout = () => {
+   return (
+      <div>
+         s4e9 
+      </div>
+   );
+};
 
-export default PLayout
+export default TabLayout;

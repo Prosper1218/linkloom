@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import {Outlet} from "react-router";
-import dp from "../Images/biggerdp.png"
+import dp from "../Images/crush.png"
 
 export const DpContext = createContext()
 

@@ -5,7 +5,7 @@ const Home = () => {
    return (
       <div className="border text-[#490057] text-xs">
          <div>
-          
+          home
          </div>
       </div>
    );

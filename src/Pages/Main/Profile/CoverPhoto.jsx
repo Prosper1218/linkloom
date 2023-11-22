@@ -4,7 +4,7 @@ import {useState} from "react";
 
 import ProfilePicture from "./ProfilePicture";
 
-const CoverPhoto = () => {
+const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const [CoverP, setCoverP] = useState(CoverPh);
    const fileinput = useRef(null);
 
@@ -15,9 +15,11 @@ const CoverPhoto = () => {
          //     console.log(imageSrc) here  i can perform actions with this, like uploading to a server
          setTimeout(() => {
             setCoverP(imageSrc);
+            console.log('you changed your cover photo to',imageSrc)
          }, 1500);
       } else {
          setCoverP(CoverPh);
+         console.log("you removed your cover photo")
       }
    };
 
@@ -27,7 +29,7 @@ const CoverPhoto = () => {
    return (
       <div className="relative z-10 mt-4 bg-white pb-5 rounded-[8px]">
          <div className=" h-[12rem] sm:h-[14rem] w-full object-cover rounded-[8px]">
-            <img src={CoverP} alt="coverphoto" className="w-full h-full object-cover z-10" />
+            <img src={CoverP} alt="coverphoto" className="w-full h-full object-cover z-10" onClick={handlecoverphotoclick} />
          </div>
          <button
             className=" z-20 text-[#A303A0] w-[6rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-white top-[10rem] sm:top-[11rem] right-[1rem] sm:right-[1.9rem] font-semibold  absolute font-sans"
@@ -40,7 +42,7 @@ const CoverPhoto = () => {
          <div className="">
             <div>
                <div className="object-cover w-[6rem] sm:w-[8rem] h-[6rem] sm:h-[8rem] absolute z-20 top-[7rem] sm:top-[8rem]  ml-3 sm:ml-12">
-                  <ProfilePicture />
+                  <ProfilePicture handleprofilepicC={handleprofilepicclick} />
                </div>
             </div>
             <br />

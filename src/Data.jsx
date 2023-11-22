@@ -11,7 +11,7 @@ export const Links = [
       id: 1,
       name: "Home",
       icon: Home,
-      to: "/Home",
+      to: "/",
    },
    {
       id: 2,
@@ -30,6 +30,12 @@ export const Links = [
       name: "Settings",
       icon: Setting,
       to: "/Settings",
+   },
+   {
+      id: 5,
+      name: "Activity",
+      icon: Setting,
+      to: "/Activity",
    },
 ];
 
@@ -78,7 +84,7 @@ export const online = [
    {
       id: 3,
       name: "John Carlo",
-      status:'online',
+      status: "online",
       when: "8mins ago",
       profile: ymk3,
    },

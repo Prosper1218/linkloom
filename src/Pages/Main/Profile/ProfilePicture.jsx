@@ -3,7 +3,7 @@ import bigdp from "../../../Images/biggerdp.png";
 import editcamera from "../../../Images/camera.png";
 import { DpContext } from "../../../LayoutFile/MainLayout";
 
-const ProfilePicture = () => {
+const ProfilePicture = ({handleprofilepicC}) => {
 //    const [Currentdp, setCurrentdp] = useState(bigdp);
    const inputref = useRef();
    const {CurrentDp, setCurrentDp,dp} = useContext(DpContext)
@@ -18,15 +18,17 @@ const ProfilePicture = () => {
          //     console.log(imageSrc) here  i can perform actions with this, like uploading to a server
          setTimeout(() => {
             setCurrentDp(imageSrc);
+            console.log('u changed your dp')
          }, 1500);
       } else {
          setCurrentDp(dp);
+         console.log('u removed ur dp')
       }
    };
 
    return (
       <>
-         <img src={CurrentDp} alt="bigdp" className="bg-[#fbb03b] rounded-full w-[100%] h-[100%] object-cover" />
+         <img src={CurrentDp} alt="bigdp" className="bg-[#fbb03b] rounded-full w-[100%] h-[100%] object-cover" onClick={handleprofilepicC}/>
          <button className="absolute  top-[3.9rem] sm:top-[5.5rem] right-3 bg-[#A303A0] p-2 rounded-full" onClick={handleclick}>
             <img src={editcamera} alt="" className="w-4" />
          </button>

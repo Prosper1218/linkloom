@@ -76,7 +76,7 @@ const Hamburgericon = ({setNav}) => {
             data-drawer-toggle="default-sidebar"
             aria-controls="default-sidebar"
             type="button"
-            className=" items-center p-2 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057] absolute top-1 ml-1"
+            className=" items-center p-2 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057] absolute top-1 ml-2"
          >
             <HamburgerMenuIcon color="white" />
          </button>
