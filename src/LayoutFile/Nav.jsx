@@ -1,7 +1,9 @@
-import {Cross1Icon, ExitIcon, HamburgerMenuIcon} from "@radix-ui/react-icons";
+import {ExitIcon, HamburgerMenuIcon} from "@radix-ui/react-icons";
 import React, {useContext, useState} from "react";
-import {Link, NavLink, redirect, useNavigate} from "react-router-dom";
-import logo from "../Images/subtract.png";
+import {NavLink, redirect, useNavigate} from "react-router-dom";
+import logo from "../Images/linkloomicon.png";
+import linkloomlogo from "../Images/linkloomlogo.png";
+import linkloomicon2 from "../Images/linkloomicon2.png";
 import {Links} from "../Data";
 import {DpContext} from "./MainLayout";
 
@@ -17,36 +19,21 @@ const Nav = () => {
 
    return (
       <div>
-         {/* <button
-            onClick={() => setNavActive(true)}
-            data-drawer-target="default-sidebar"
-            data-drawer-toggle="default-sidebar"
-            aria-controls="default-sidebar"
-            type="button"
-            className="inline-flex items-center p-2 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057]"
-         >
-            <HamburgerMenuIcon color="white" />
-         </button> */}
-         <Hamburgericon setNav={setNavActive} />
-
+         <div className="w-[2.4rem] h-[2.4rem] absolute top-[2px] ">
+            <img src={linkloomicon2} alt="" />
+         </div>
          <aside
             id="default-sidebar"
-            className={`fixed top-0 left-0 z-40 w-[10rem] sm:w-[8rem] h-screen translate-x-[-13rem] sm:translate-x-0 transition ease-in-out delay-150 bg-[#490057]
-         ${NavActive ? "translate-x-[0px]" : ""}`}
+            className={`fixed bottom-0 sm:top-0 sm:left-0 z-40 w-full sm:w-[8rem] h-12 sm:h-screen translate-x-0 transition ease-in-out delay-150 bg-[#480057] overflow-y-hidden`}
             aria-label="Sidebar"
          >
-            <div className="h-full overflow-y-auto bg-rgba(73, 0, 87, 1)-800 ">
-               <div className=" flex justify-end w-full">
-                  <button className="inline-flex items-center p-2 ms-3 text-sm sm:hidden focus:outline-none rounded-sm" type="button">
-                     <Cross1Icon className="float-right" onClick={() => setNavActive(false)} color="white" />
-                  </button>
-               </div>
-               <ul className="font-medium mt-8 space-y-20">
-                  <div className=" flex row justify-center gap-1 mt-0 items-center h-auto overflow-y-hidden ">
-                     <img src={logo} alt={logo} className="w-[1.15rem] h-[1.1rem] flex-none" />{" "}
-                     <p className="text-white font-thin font-nunito leading-none text-sm overflow-y-hidden">3MM</p>
+            <div className="h-full overflow-y-hidden bg-rgba(73, 0, 87, 1)-800 ">
+               <ul className="font-medium space-y-20">
+                  <div className=" hidden sm:flex row justify-center gap-1 items-center h-auto overflow-y-hidden mt-6">
+                     <img src={logo} alt={logo} className="w-[1.5rem] h-[1.5rem] flex-none" />
+                     <img src={linkloomlogo} alt="" className="w-16" />
                   </div>
-                  <div className="text-center flex flex-col mt-40 items-center space-y-5">
+                  <div className=" overflow-y-hidden text-center justify-normal sm:gap-0 absolute sm:static bottom-0 sm:bottom-auto w-full sm:w-auto flex flex-row sm:flex-col sm:mt-40 items-center sm:space-y-5 h-12 sm:h-auto gap-0 border-t-[1px] border-white border-solid sm:border-none">
                      {Links.map((items) => {
                         const {id, name, icon, to} = items;
                         return (
@@ -57,18 +44,21 @@ const Nav = () => {
                               key={id}
                               to={to}
                            >
-                              <img src={icon} alt={name} className="w-4 h-4 " /> {name}
+                              <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-center">
+                                 {icon ? <img src={icon} alt={name} className="w-7 sm:w-5 h-7 sm:h-5 object-cover" /> : ""}
+                              </div>
+                              <span className="hidden sm:block text-white font-sans"> {name}</span>
                            </NavLink>
                         );
                      })}
 
-                     <div className="absolute bottom-0 h-32 w-full">
+                     <div className="absolute bottom-0 h-36 w-full hidden sm:block">
                         <button onClick={() => navigate("/Profile")} className="w-[1.7rem] h-[1.7rem] object-cover">
                            <img src={CurrentDp} alt="profile-picture" className="w-full h-full object-cover rounded-full" />
                         </button>
                         <div className="">
-                           <button className=" rotate-180" type="button">
-                              <ExitIcon color="white" className=" scale-110 "/>
+                           <button className=" rotate-180 h-6 overflow-hidden" type="button">
+                              <ExitIcon color="white" className=" scale-110 " />
                            </button>
                         </div>
                      </div>
@@ -76,23 +66,6 @@ const Nav = () => {
                </ul>
             </div>
          </aside>
-      </div>
-   );
-};
-
-const Hamburgericon = ({setNav}) => {
-   return (
-      <div>
-         <button
-            onClick={() => setNav(true)}
-            data-drawer-target="default-sidebar"
-            data-drawer-toggle="default-sidebar"
-            aria-controls="default-sidebar"
-            type="button"
-            className=" items-center p-1 text-sm rounded-sm sm:hidden focus:outline-none bg-[#490057] absolute top-1 ml-2"
-         >
-            <HamburgerMenuIcon color="white" />
-         </button>
       </div>
    );
 };

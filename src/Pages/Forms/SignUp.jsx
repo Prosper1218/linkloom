@@ -26,7 +26,7 @@ const SignUp = () => {
    const handlesubmit = (e) => {
       e.preventDefault();
       setTimeout(() => {
-         navigate("/Home");
+         navigate("/");
       }, 1500);
    };
    const handlepassword1change = () => {
@@ -85,6 +85,7 @@ const SignUp = () => {
                      ref={Password2ref}
                      onChange={handlepassword2change}
                   />
+
                   <button type="button" className="absolute top-[6.9rem] right-8" onClick={togglepassword2}>
                      {/* {ShowPassword ? <EyeClosedIcon /> : <EyeOpenIcon />} */}
                      <img src={seepass ? Hidei : Seei} alt="hide/see icon" className="w-[1.2rem]" />

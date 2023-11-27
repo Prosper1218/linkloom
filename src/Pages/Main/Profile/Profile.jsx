@@ -2,7 +2,6 @@ import React, {useContext, useState} from "react";
 import smalldp from "../../../Images/DP.png";
 import CoverPhoto from "./CoverPhoto";
 import MainLayout, {DpContext} from "../../../LayoutFile/MainLayout";
-import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import user from "../../../Images/user.png";
 import mail from "../../../Images/mail.png";
 import phone from "../../../Images/phone.png";
@@ -12,7 +11,6 @@ import relationship from "../../../Images/relationship.png";
 import suitcase from "../../../Images/suitcase.png";
 import {online, ymk} from "../../../Data";
 import Tablayout from "./ProfileLayout/TabLayout";
-import {Route} from "react-router";
 import VeiwDp from "./ProfileLayout/VeiwDp";
 
 const Profile = () => {
@@ -20,8 +18,8 @@ const Profile = () => {
    const [ViewProfilepic, setViewProfilepic] = useState(false);
 
    return (
-      <div className=" bg-[#F7F7F8]">
-         {ViewProfilepic && <VeiwDp curr={CurrentDp} />}
+      <div className={` bg-[#F7F7F8] `}>
+         {ViewProfilepic && <VeiwDp curr={CurrentDp} Setvdp={setViewProfilepic} />}
          <div className="w-[100%] flex flex-row gap-3 pt-1 sm-pt-0">
             <form action="" className=" w-[100%] gap-3 flex">
                <input
@@ -40,8 +38,8 @@ const Profile = () => {
 
          <CoverPhoto handleprofilepicclick={() => setViewProfilepic(true)} />
 
-         <div className="flex flex-col-reverse md:flex-row gap-4 items-start mt-6">
-            <div className="w-full md:w-[50%] grid grid-cols-2 gap-4 items-start">
+         <div className="flex flex-col-reverse lg:flex-row gap-4 items-start mt-6">
+            <div className="w-full lg:w-[50%] grid grid-cols-2 gap-4 items-start">
                <div className="pt-4 bg-white rounded-[8px]">
                   <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3">About</h3>
                   <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4">
@@ -76,12 +74,12 @@ const Profile = () => {
                            const {id, name, email, profile} = pymk;
                            return (
                               <div key={id} className="flex  gap-1 sm:gap-3 items-center  pb-2">
-                                 <div className=" sm:w-10 sm:h-10  w-8 h-8 bg-[#fbb03b] rounded-full">
+                                 <div className="sm:w-9 sm:h-9  w-7 h-7 bg-[#fbb03b] rounded-full">
                                     <img src={profile} alt={name} className="w-full h-full object-cover" />
                                  </div>
-                                 <div className="grow leading-4">
-                                    <p className="text-[70%] text-[#A303A0] font-bold capitalize"> {name} </p>
-                                    <p className="text-[65%] text-[#A303A0]"> {email}</p>
+                                 <div className="grow leading-3">
+                                    <p className="text-[70%] text-[#A303A0] font-bold capitalize overflow-y-hidden"> {name} </p>
+                                    <p className="text-[58%] text-[#A303A0] overflow-y-hidden"> {email}</p>
                                  </div>
                               </div>
                            );
@@ -94,14 +92,14 @@ const Profile = () => {
                         {online.map((active) => {
                            const {id, name, status, when, profile} = active;
                            return (
-                              <div key={id} className="flex  gap-1 sm:gap-3 items-center border-b-[0.5px]  border-gray border-solid pb-2">
-                                 <div className=" sm:w-10 sm:h-10  w-8 h-8 bg-[#490057] rounded-full">
+                              <div key={id} className="flex  gap-1 sm:gap-3 items-center border-b-[0.5px]  border-gray border-solid pb-1">
+                                 <div className="sm:w-9 sm:h-9  w-7 h-7 bg-[#490057] rounded-full">
                                     <img src={profile} alt={name} className="w-full h-full object-cover" />
                                  </div>
                                  <div className="grow flex items-center justify-between">
-                                    <div className="leading-4">
-                                       <p className="text-[70%] text-[#A303A0] font-bold capitalize"> {name} </p>
-                                       <p className="text-[65%] text-[#A303A0]"> {status || `last seen ${when}`}</p>
+                                    <div className="leading-3">
+                                       <p className="text-[70%] text-[#A303A0] font-bold capitalize overflow-y-hidden"> {name} </p>
+                                       <p className="text-[58%] text-[#A303A0] overflow-y-hidden"> {status || `last seen ${when}`}</p>
                                     </div>
                                     <div className="text-[55%] text-[#A303A0]  hidden xl:block  ">{when}</div>
                                  </div>
@@ -112,9 +110,8 @@ const Profile = () => {
                   </div>
                </div>
             </div>
-            <div className="grow w-full md:w-auto bg-white rounded-[8px] h-[27rem] overflow-auto">
+            <div className="grow w-full lg:w-auto bg-white rounded-[8px] h-[27rem] overflow-y-auto">
                <Tablayout />
-             
             </div>
          </div>
          <br />
@@ -123,3 +120,4 @@ const Profile = () => {
 };
 
 export default Profile;
+// S4E10

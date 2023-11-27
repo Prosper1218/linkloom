@@ -3,10 +3,12 @@ import Message from "./Images/Message.png";
 import Home from "./Images/Home.png";
 import Setting from "./Images/Setting.png";
 import Person from "./Images/Person.png";
+import activity from "./Images/activity.png";
 import ymk1 from "./Images/ymk1.png";
 import ymk2 from "./Images/ymk2.png";
 import ymk3 from "./Images/ymk3.png";
 import Post1 from "./Images/post1.png";
+
 
 export const Links = [
    {
@@ -23,7 +25,7 @@ export const Links = [
    },
    {
       id: 3,
-      name: "Messages",
+      name: "Message",
       icon: Message,
       to: "/Messages",
    },
@@ -42,7 +44,7 @@ export const Links = [
    {
       id: 6,
       name: "Activity",
-      icon: Setting,
+      icon: activity,
       to: "/Activity",
    },
 ];
@@ -123,5 +125,171 @@ export const UserPosts = [
       caption: "Experience Royalty, $5000!! suit  for OGs",
       likes: "15,000",
       Comments: "8,000",
+   },
+];
+
+export const followers = [
+   {
+      id: 1,
+      name: "Shelbe Gold",
+      status: "online",
+      when: "",
+      profile: ymk1,
+      following: false,
+   },
+   {
+      id: 2,
+      name: "Robert Bacins",
+      status: null,
+      when: "4mins ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 3,
+      name: "John Carlo",
+      status: "online",
+      when: "",
+      profile: ymk3,
+      following: false,
+   },
+   {
+      id: 4,
+      name: "phobe james",
+      status: null,
+      when: "1hr ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 5,
+      name: "freya jack",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: false,
+   },
+   {
+      id: 6,
+      name: "Prosper williams",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 7,
+      name: "kraig forbes",
+      status: null,
+      when: "4hrs ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 8,
+      name: "freya jack",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: false,
+   },
+   {
+      id: 9,
+      name: "Prosper williams",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: false,
+   },
+   {
+      id: 10,
+      name: "kraig forbes",
+      status: null,
+      when: "4hrs ago",
+      profile: ymk2,
+      following: false,
+   },
+];
+
+export const followin = [
+   {
+      id: 1,
+      name: "Shelbe Gold",
+      status: "online",
+      when: "",
+      profile: ymk1,
+      following: true,
+   },
+   {
+      id: 2,
+      name: "Robert Bacins",
+      status: null,
+      when: "4mins ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 3,
+      name: "John Carlo",
+      status: "online",
+      when: "",
+      profile: ymk3,
+      following: true,
+   },
+   {
+      id: 4,
+      name: "phobe james",
+      status: null,
+      when: "1hr ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 5,
+      name: "freya jack",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 6,
+      name: "Prosper williams",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 7,
+      name: "kraig forbes",
+      status: null,
+      when: "4hrs ago",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 8,
+      name: "freya jack",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 9,
+      name: "Prosper williams",
+      status: "online",
+      when: "",
+      profile: ymk2,
+      following: true,
+   },
+   {
+      id: 10,
+      name: "kraig forbes",
+      status: null,
+      when: "4hrs ago",
+      profile: ymk2,
+      following: true,
    },
 ];

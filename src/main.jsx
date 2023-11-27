@@ -11,22 +11,28 @@ import Settings from "./Pages/Main/Settings.jsx";
 import SignUp from "./Pages/Forms/SignUp.jsx";
 import Activity from "./Pages/Main/Activity.jsx";
 import Messages from "./Pages/Main/Messages.jsx";
+import PrivateRoute from "./Utils/PrivateRoute.jsx";
+import AuthContext from "./Utils/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <BrowserRouter>
-         <Routes>
-            {/* <Route path="/" element={<SignIn />}></Route> */}
-            <Route path="/SignUp" element={<SignUp />} />
-            <Route element={<MainLayout />}>
-               <Route path="/" element={<Home />} />
-               <Route path="/Profile" element={<Profile />} />
-               <Route path="/Gallery" element={<Gallery />} />
-               <Route path="/Settings" element={<Settings />} />
-               <Route path="/Activity" element={<Activity />} />
-               <Route path="/Messages" element={<Messages />} />
-            </Route>
-         </Routes>
+        <AuthContext>
+            <Routes>
+               <Route path="/SignIn" element={<SignIn />}></Route>
+               <Route path="/SignUp" element={<SignUp />} />
+               <Route element={<MainLayout />}>
+                  <Route path="/" element={<Home />} />
+                  <Route element={<PrivateRoute />}>
+                     <Route path="/Profile" element={<Profile />} />
+                     <Route path="/Gallery" element={<Gallery />} />
+                     <Route path="/Settings" element={<Settings />} />
+                     <Route path="/Activity" element={<Activity />} />
+                     <Route path="/Messages" element={<Messages />} />
+                  </Route>
+               </Route>
+            </Routes>
+        </AuthContext>
       </BrowserRouter>
    </React.StrictMode>
 );

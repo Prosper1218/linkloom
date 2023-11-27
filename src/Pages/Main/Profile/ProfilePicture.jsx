@@ -1,5 +1,4 @@
 import React, {useContext, useRef, useState} from "react";
-import bigdp from "../../../Images/biggerdp.png";
 import editcamera from "../../../Images/camera.png";
 import { DpContext } from "../../../LayoutFile/MainLayout";
 
