@@ -5,9 +5,11 @@ import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import threedots from "../../../../Images/threedots.png";
 import Loveicon from "../../../../Images/Loveicon.png";
 import commenticon from "../../../../Images/commenticon.png";
+import { UseAuth } from "../../../../Utils/AuthContext";
 
 const Posts = () => {
    const {CurrentDp} = useContext(DpContext);
+   const {User} = UseAuth()
    return (
       <div className="space-y-2 mx-2 sm:mx-4">
          {UserPosts.map((Pos) => {
@@ -20,7 +22,7 @@ const Posts = () => {
                      </div>
                      <div className="flex justify-between grow items-center">
                         <div className="leading-4">
-                           <p className="text-xs font-bold text-[#490057]">username</p>
+                           <p className="text-xs font-bold text-[#490057]">{User.name}</p>
                            <p className="text-[50%] text-[#A303A0] ">{time}</p>
                         </div>
                         <div>
@@ -32,7 +34,7 @@ const Posts = () => {
                      <img src={postimage} alt="postimg" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex gap-1 items-center justify-start mb-2">
-                     <p className="text-xs font-bold text-[#490057]">{poster ? {poster} : "username"}</p>
+                     <p className="text-xs font-bold text-[#490057]">{User.name}</p>
                      <p className="text-[55%] text-[#490057] pt-[0.21rem]">{caption}</p>
                   </div>
                   <div className="flex justify-start items-center gap-2">

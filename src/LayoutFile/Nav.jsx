@@ -6,11 +6,19 @@ import linkloomlogo from "../Images/linkloomlogo.png";
 import linkloomicon2 from "../Images/linkloomicon2.png";
 import {Links} from "../Data";
 import {DpContext} from "./MainLayout";
+import {UseAuth} from "../Utils/AuthContext";
 
 const Nav = () => {
    const [NavActive, setNavActive] = useState(false);
    const {CurrentDp} = useContext(DpContext);
    const navigate = useNavigate();
+   const {Logout} = UseAuth();
+
+
+const handlelogout=()=>{
+   Logout()
+}
+
    const handlelinkclick = () => {
       {
          NavActive ? setNavActive(false) : null;
@@ -57,7 +65,7 @@ const Nav = () => {
                            <img src={CurrentDp} alt="profile-picture" className="w-full h-full object-cover rounded-full" />
                         </button>
                         <div className="">
-                           <button className=" rotate-180 h-6 overflow-hidden" type="button">
+                           <button className=" rotate-180 h-6 overflow-hidden" type="button" onClick={handlelogout}>
                               <ExitIcon color="white" className=" scale-110 " />
                            </button>
                         </div>

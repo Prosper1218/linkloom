@@ -12,10 +12,29 @@ import suitcase from "../../../Images/suitcase.png";
 import {online, ymk} from "../../../Data";
 import Tablayout from "./ProfileLayout/TabLayout";
 import VeiwDp from "./ProfileLayout/VeiwDp";
+import {UseAuth} from "../../../Utils/AuthContext";
+import {useEffect} from "react";
+import localforage from "localforage";
 
 const Profile = () => {
    const {CurrentDp} = useContext(DpContext);
    const [ViewProfilepic, setViewProfilepic] = useState(false);
+   const {User, EditedDetails} = UseAuth();
+   const [SavedData, setSavedData] = useState([]);
+
+   localforage
+      .getItem("Details")
+      .then((FedData) => {
+         if (FedData) {
+            // console.log(FedData);
+            setSavedData(FedData);
+         } else {
+            console.error("error, no data found");
+         }
+      })
+      .catch((error) => {
+         console.log(error);
+      });
 
    return (
       <div className={` bg-[#F7F7F8] `}>
@@ -37,32 +56,35 @@ const Profile = () => {
          {/*  */}
 
          <CoverPhoto handleprofilepicclick={() => setViewProfilepic(true)} />
-
          <div className="flex flex-col-reverse lg:flex-row gap-4 items-start mt-6">
             <div className="w-full lg:w-[50%] grid grid-cols-2 gap-4 items-start">
                <div className="pt-4 bg-white rounded-[8px]">
                   <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3">About</h3>
+
                   <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4">
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={user} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">Female</p>
+                        <img src={user} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.gender}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={birthdaycake} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">14, Nov 2023</p>
+                        <img src={birthdaycake} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.date}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={location} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">14, Uruan Street Uyo, Akwa Ibom</p>
+                        <img src={location} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.location}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={mail} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0] flex-wrap grow">wprosper92@gmail.com</p>
+                        <img src={mail} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0] flex-wrap grow">{User.email}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={relationship} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">In a relationship</p>
+                        <img src={relationship} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.relationship}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={suitcase} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">Student</p>
+                        <img src={suitcase} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.occupation}</p>
                      </div>
                      <div className="flex flex-row py-2 gap-2">
-                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">08130013592</p>
+                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.number}</p>
+                     </div>
+                     <div className="flex flex-row py-2 gap-2">
+                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">Joined:{User ? User.registration : "hello"}</p>
                      </div>
                   </section>
                </div>

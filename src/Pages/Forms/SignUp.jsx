@@ -4,6 +4,10 @@ import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import Hidei from "../../Images/Hidei.png";
 import Seei from "../../Images/Seei.png";
+import {UseAuth} from "../../Utils/AuthContext";
+import LoaderC from "../../LayoutFile/LoaderC";
+import logo from "../../Images/linkloomlogosec.png";
+import linkloomicon2 from "../../Images/linkloomicon2.png";
 
 const SignUp = () => {
    const [ShowPassword, setShowPassword] = useState(true);
@@ -14,6 +18,13 @@ const SignUp = () => {
    const Password2ref = useRef();
    const [Password1length, setPassword1length] = useState(true);
    const [ThemPassMatch, setThemPassMatch] = useState(true);
+   const SignUpRef = useRef();
+   const {SignUpUser, User} = UseAuth();
+   useEffect(() => {
+      if (User) {
+         navigate("/EditProfile");
+      }
+   }, []);
 
    const togglepassword = () => {
       setShowPassword(!ShowPassword);
@@ -25,9 +36,11 @@ const SignUp = () => {
 
    const handlesubmit = (e) => {
       e.preventDefault();
-      setTimeout(() => {
-         navigate("/");
-      }, 1500);
+      const Name = SignUpRef.current.name.value;
+      const Email = SignUpRef.current.email.value;
+      const Password = SignUpRef.current.password.value;
+      let UserData = {Name, Email, Password};
+      SignUpUser(UserData);
    };
    const handlepassword1change = () => {
       {
@@ -45,36 +58,47 @@ const SignUp = () => {
    };
 
    return (
-      <div>
-         <div className=" w-full min-h-[100vh] flex flex-row justify-center text-center px-4 ">
-            <div className=" w-full sm:w-[380px] h-[350px] text-white box mt-52 ">
+      <div className="min-h-[100vh] pt-4">
+         <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden pl-4">
+            <img src={linkloomicon2} alt={logo} className="w-[4rem] h-[4rem] flex-none" />
+            <img src={logo} alt="" className="w-32" />
+         </div>
+         <div className=" w-full  flex flex-row justify-center text-center px-4 ">
+            <div className=" w-full sm:w-[400px] h-[370px] text-white box mt-28 overflow-y-hidden ">
                <h4 className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[#000000] text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10">
                   Sign Up !
                </h4>
-               <form action="" className="px-4 relative">
-                  <input
-                     type="text"
-                     name="Email"
-                     id="Email"
-                     className="w-full h-8 border-[0.5px] text-black border-black border-solid focus:outline-none rounded-md bg-transparent pl-4 text-xs mb-5"
-                     placeholder="Email..."
-                     required
-                  />
+               <form action="" className="px-4 relative" onSubmit={handlesubmit} ref={SignUpRef}>
+                <div className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-2">
+                     <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        className="w-full h-8 border-[0.5px] text-black border-black border-solid focus:outline-none rounded-md bg-transparent pl-4 text-xs mb-3"
+                        placeholder="Username..."
+                        required
+                     />
+                     <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        className="w-full h-8 border-[0.5px] text-black border-black border-solid focus:outline-none rounded-md bg-transparent pl-4 text-xs mb-3"
+                        placeholder="Email..."
+                        required
+                     />
+                </div>
                   <input
                      type={ShowPassword ? "password" : "text"}
-                     name="Password"
-                     id="Password"
+                     name="password"
+                     id="password"
                      className="w-full h-8 border-[0.5px] text-black border-black border-solid focus:outline-none rounded-md bg-transparent pl-4 text-xs relative"
                      placeholder="Password..."
                      ref={Password1ref}
                      onChange={handlepassword1change}
                   />
-                  <button type="button" className="absolute top-[3.7rem] right-8" onClick={togglepassword}>
-                     {/* {ShowPassword ? <EyeClosedIcon /> : <EyeOpenIcon />} */}
-                     {/* <img src={ShowPassword ? Hidei : Seei} alt="hide/see icon" className="w-[1.rem]" /> */}
-                  </button>
-                  <div className=" text-left text-xs font-thin pl-2 text-black h-5">
-                     {Password1length ? "" : <p className="text-red-600">Password must be at least 6 characters!</p>}
+                  {/* <button type="button" className="absolute top-[3.7rem] right-8" onClick={togglepassword}></button> */}
+                  <div className=" text-left text-xs font-thin pl-2 text-black h-[1.1rem]">
+                     {Password1length ? "" : <p className="text-red-600 text-80%">Password must be at least 6 characters!</p>}
                   </div>
                   <input
                      type={seepass ? "password" : "text"}
@@ -85,20 +109,22 @@ const SignUp = () => {
                      ref={Password2ref}
                      onChange={handlepassword2change}
                   />
-
-                  <button type="button" className="absolute top-[6.9rem] right-8" onClick={togglepassword2}>
+                  <button type="button" className="absolute top-[6.3rem] right-8" onClick={togglepassword2}>
                      {/* {ShowPassword ? <EyeClosedIcon /> : <EyeOpenIcon />} */}
                      <img src={seepass ? Hidei : Seei} alt="hide/see icon" className="w-[1.2rem]" />
                   </button>
-                  <div className=" text-left text-xs font-thin h-5 pl-2 text-black">{ThemPassMatch ? "" : <p className="text-red-600">Passwords don't match!</p>}</div>
+                  <div className=" text-left text-xs font-thin h-5 pl-2 ">{ThemPassMatch ? "" : <p className="text-red-600 tex-[78%]">Passwords don't match!</p>}</div>
                   <button
                      disabled={Disabled}
                      type="submit"
+                     style={{opacity: Disabled ? 0.7 : null}}
                      className="w-full h-8 rounded-md border-none text-[55%] items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] text-white"
-                     onClick={handlesubmit}
                   >
                      SIGN UP
-                  </button>
+                  </button>{" "}
+                  <p className=" text-left text-xs font-thin mt-1 mb-4 pl-2 text-black">
+                     have an account? <Link to={"/SignIn"} className="underline">Sign In</Link>
+                  </p>
                </form>
             </div>
          </div>

@@ -13,14 +13,17 @@ import Activity from "./Pages/Main/Activity.jsx";
 import Messages from "./Pages/Main/Messages.jsx";
 import PrivateRoute from "./Utils/PrivateRoute.jsx";
 import AuthContext from "./Utils/AuthContext.jsx";
+import ProfileSetUp from "./Pages/Forms/ProfileSetUp.jsx";
+import PrivateRoutesec from "./Utils/PrivateRoutesec.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <BrowserRouter>
-        <AuthContext>
+         <AuthContext>
             <Routes>
-               <Route path="/SignIn" element={<SignIn />}></Route>
+               <Route path="/SignIn" element={<SignIn />} />
                <Route path="/SignUp" element={<SignUp />} />
+
                <Route element={<MainLayout />}>
                   <Route path="/" element={<Home />} />
                   <Route element={<PrivateRoute />}>
@@ -31,8 +34,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                      <Route path="/Messages" element={<Messages />} />
                   </Route>
                </Route>
+               <Route element={<PrivateRoutesec />}>
+                  <Route path="/EditProfile" element={<ProfileSetUp />} />
+               </Route>
             </Routes>
-        </AuthContext>
+         </AuthContext>
       </BrowserRouter>
    </React.StrictMode>
 );

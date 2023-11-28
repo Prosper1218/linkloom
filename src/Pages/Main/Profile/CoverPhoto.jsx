@@ -1,12 +1,31 @@
 import React, {useEffect, useRef} from "react";
 import CoverPh from "../../../Images/CoverPhoto.png";
 import {useState} from "react";
-
 import ProfilePicture from "./ProfilePicture";
+import {UseAuth} from "../../../Utils/AuthContext";
+import {Navigate, useNavigate} from "react-router";
+import localforage from "localforage";
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const [CoverP, setCoverP] = useState(CoverPh);
    const fileinput = useRef(null);
+   const {EditedDetails, User} = UseAuth();
+   const navigate = useNavigate();
+   const [SavedData, setSavedData] = useState([]);
+
+   //
+   localforage
+      .getItem("Details")
+      .then((FedData) => {
+         if (FedData) {
+            setSavedData(FedData);
+         } else {
+            console.error("error, no data found");
+         }
+      })
+      .catch((error) => {
+         console.log(error);
+      });
 
    const handleFileChange = (event) => {
       const imgfile = event.target.files[0];
@@ -15,11 +34,11 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
          //     console.log(imageSrc) here  i can perform actions with this, like uploading to a server
          setTimeout(() => {
             setCoverP(imageSrc);
-            console.log('you changed your cover photo to',imageSrc)
+            console.log("you changed your cover photo to", imageSrc);
          }, 1500);
       } else {
          setCoverP(CoverPh);
-         console.log("you removed your cover photo")
+         console.log("you removed your cover photo");
       }
    };
 
@@ -49,11 +68,14 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
 
             <div className="relative flex flex-row justify-between  px-[1rem] sm:px-[1.9rem]">
                <div className="ml:0 sm:ml-3 pr-6 leading-3 pt-2">
-                  <p className="font-sans font-bold text-[#A303A0] text-lg">User Name</p>
-                  <p className=" font-sans  text-[#A303A0] text-[65%] overflow-y-hidden">Bio</p>
+                  <p className="font-sans font-bold text-[#A303A0] text-lg">{SavedData.name} {SavedData.Lastname}</p>
+                  <p className=" font-sans  text-[#A303A0] text-[65%] overflow-y-hidden">{SavedData.bio}</p>
                </div>
                <div>
-                  <button className="text-[#A303A0] border-[1px] border-[#A303A0] border-solid w-[5rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-transparent font-semiboldfont-sans">
+                  <button
+                     className="text-[#A303A0] border-[1px] border-[#A303A0] border-solid w-[5rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-transparent font-semiboldfont-sans"
+                     onClick={() => navigate("/EditProfile")}
+                  >
                      Edit profile
                   </button>
                </div>

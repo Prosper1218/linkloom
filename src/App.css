@@ -48,3 +48,23 @@ body {
 /* #tabnav a.active-link{
   color: red;
 } */
+
+.loading-logo{
+   animation: loadlogo 1s ease-in-out infinite;
+   /* transition: ease-out 3s; */
+}
+/* .loading-logo:hover{
+   scale: 1.1;
+   transition: ease-in-out 3s;
+} */
+@keyframes loadlogo {
+   0%{
+      scale:0.9;
+   }
+   50%{
+      scale:1;
+   }
+   100%{
+      scale:0.9;
+   }
+}
