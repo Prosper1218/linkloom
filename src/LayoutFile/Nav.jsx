@@ -12,12 +12,11 @@ const Nav = () => {
    const [NavActive, setNavActive] = useState(false);
    const {CurrentDp} = useContext(DpContext);
    const navigate = useNavigate();
-   const {Logout} = UseAuth();
+   const {Logout, User} = UseAuth();
 
-
-const handlelogout=()=>{
-   Logout()
-}
+   const handlelogout = () => {
+      Logout();
+   };
 
    const handlelinkclick = () => {
       {
@@ -64,11 +63,15 @@ const handlelogout=()=>{
                         <button onClick={() => navigate("/Profile")} className="w-[1.7rem] h-[1.7rem] object-cover">
                            <img src={CurrentDp} alt="profile-picture" className="w-full h-full object-cover rounded-full" />
                         </button>
-                        <div className="">
-                           <button className=" rotate-180 h-6 overflow-hidden" type="button" onClick={handlelogout}>
-                              <ExitIcon color="white" className=" scale-110 " />
-                           </button>
-                        </div>
+                        {User ? (
+                           <>
+                              <div className="">
+                                 <button className=" rotate-180 h-6 overflow-hidden" type="button" onClick={handlelogout}>
+                                    <ExitIcon color="white" className=" scale-110 " />
+                                 </button>
+                              </div>
+                           </>
+                        ) : null}
                      </div>
                   </div>
                </ul>

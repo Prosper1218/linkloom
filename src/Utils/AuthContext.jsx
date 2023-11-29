@@ -3,11 +3,12 @@ import {useContext, useState, createContext, useEffect} from "react";
 import {account} from "../appwriteConfig";
 import {ID} from "appwrite";
 import LoaderC from "../LayoutFile/LoaderC";
-import Alert from "../LayoutFile/Alert";
 import {Navigate, useNavigate} from "react-router";
 //
 //
 export const USERContext = createContext();
+export const ThemeContext = createContext();
+//
 const AuthContext = ({children}) => {
    const [User, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
@@ -15,16 +16,15 @@ const AuthContext = ({children}) => {
    const navigate = useNavigate();
    //
    //
-   // check user status
+   // USEEFFECT
    useEffect(() => {
       // checkUserStatus();
       setLoading(false);
-      localStorage.removeItem("userdata")
    }, []);
 
-   //
-   //
-   // TO SIGN OUR USER IN
+   //SIGN IN A USER
+   //SIGN IN A USER
+   //SIGN IN A USER
    const SignInUser = async (UserData) => {
       setLoading(true);
       try {
@@ -37,12 +37,10 @@ const AuthContext = ({children}) => {
       }
       setLoading(false);
    };
-   //
-   //
-   //
-   // Sign Up A User
+   // SignUP A USER
+   // SignUP A USER
+   // SignUP A USER
    const SignUpUser = async (UserData) => {
-      console.log(UserData.Name, UserData.Password, UserData.Email);
       setLoading(true);
       try {
          const response = await account.create(ID.unique(), UserData.Email, UserData.Password, UserData.Name);
@@ -55,8 +53,8 @@ const AuthContext = ({children}) => {
       }
       setLoading(false);
    };
-   //
-   //
+   // Check uSer status
+   // Check uSer status
    // Check uSer status
    const checkUserStatus = async () => {
       setLoading(true);
@@ -67,47 +65,47 @@ const AuthContext = ({children}) => {
          console.log("error");
          setUser(null);
          navigate("/SignIn");
-         return null
+         return null;
       }
-      
+
       setLoading(false);
    };
-   const SetUpEdit = async (editDetails) => {
-      try {
-         // const AccountData = account.get("current");
-         // setEditedDetails(editDetails);
-         navigate("/");
-         localStorage.setItem('userinfo',JSON.stringify(editDetails))
-         // const info = localStorage.getItem('userdata.Lastname')
-         // setEditedDetails(info)
 
-      } catch (error) {
-         console.log("error");
-      }
-      // console.log(editDetails);
-   };
+   // LOGOUT USER
+   // LOGOUT USER
+   // LOGOUT USER
+
    const Logout = async () => {
       await account.deleteSession("current");
       setUser(null);
       navigate("/Signin");
       console.log("signed out");
-      localStorage.setItem("cookieFallback")
    };
+
+   // CONTEXT DATA/VALUE
+   // CONTEXT DATA/VALUE
+   // CONTEXT DATA/VALUE
 
    const ContextData = {
       User,
       SignInUser,
       SignUpUser,
-      SetUpEdit,
       EditedDetails,
       Logout,
    };
+
+   // RETURN
+   // RETURN
+   // RETURN
    return (
       <>
          <USERContext.Provider value={ContextData}>{loading ? <LoaderC /> : children}</USERContext.Provider>
       </>
    );
 };
+// CUSTOM HOOK TO PASS THE CONTEXT
+// CUSTOM HOOK TO PASS THE CONTEXT
+// CUSTOM HOOK TO PASS THE CONTEXT
 
 export const UseAuth = () => {
    return useContext(USERContext);

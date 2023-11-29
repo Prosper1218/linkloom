@@ -5,13 +5,14 @@ import ProfilePicture from "./ProfilePicture";
 import {UseAuth} from "../../../Utils/AuthContext";
 import {Navigate, useNavigate} from "react-router";
 import localforage from "localforage";
+import {UseTheme} from "../../../Utils/ThemeContext";
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const [CoverP, setCoverP] = useState(CoverPh);
    const fileinput = useRef(null);
-   const {EditedDetails, User} = UseAuth();
    const navigate = useNavigate();
    const [SavedData, setSavedData] = useState([]);
+   const {DarkTheme} = UseTheme();
 
    //
    localforage
@@ -46,7 +47,10 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
       fileinput.current.click();
    };
    return (
-      <div className="relative z-10 mt-4 bg-white pb-5 rounded-[8px]">
+      <div
+         style={{backgroundColor: DarkTheme ? "#2222" : "#F7F7F8", color: DarkTheme ? "#F7F7F8" : "#2222", boxShadow: DarkTheme ? "rgba(255, 255, 255, 0.1) 0px 1px 6px" : "rgba(0, 0, 0, 0.1) 0px 2px 4px"}}
+         className="relative z-10 mt-4 pb-5 rounded-[8px]"
+      >
          <div className=" h-[12rem] sm:h-[14rem] w-full object-cover rounded-[8px]">
             <img src={CoverP} alt="coverphoto" className="w-full h-full object-cover z-10" onClick={handlecoverphotoclick} />
          </div>
@@ -68,7 +72,9 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
 
             <div className="relative flex flex-row justify-between  px-[1rem] sm:px-[1.9rem]">
                <div className="ml:0 sm:ml-3 pr-6 leading-3 pt-2">
-                  <p className="font-sans font-bold text-[#A303A0] text-lg">{SavedData.name} {SavedData.Lastname}</p>
+                  <p className="font-sans font-bold text-[#A303A0] text-lg">
+                     {SavedData.name} {SavedData.Lastname}
+                  </p>
                   <p className=" font-sans  text-[#A303A0] text-[65%] overflow-y-hidden">{SavedData.bio}</p>
                </div>
                <div>

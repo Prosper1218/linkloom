@@ -15,12 +15,14 @@ import VeiwDp from "./ProfileLayout/VeiwDp";
 import {UseAuth} from "../../../Utils/AuthContext";
 import {useEffect} from "react";
 import localforage from "localforage";
+import {UseTheme} from "../../../Utils/ThemeContext";
 
 const Profile = () => {
    const {CurrentDp} = useContext(DpContext);
    const [ViewProfilepic, setViewProfilepic] = useState(false);
    const {User, EditedDetails} = UseAuth();
    const [SavedData, setSavedData] = useState([]);
+   const {DarkTheme} = UseTheme();
 
    localforage
       .getItem("Details")
@@ -37,7 +39,7 @@ const Profile = () => {
       });
 
    return (
-      <div className={` bg-[#F7F7F8] `}>
+      <div style={{backgroundColor: DarkTheme ? "#2222" : "#F7F7F8", color: DarkTheme ? "#F7F7F8" : "#2222"}}>
          {ViewProfilepic && <VeiwDp curr={CurrentDp} Setvdp={setViewProfilepic} />}
          <div className="w-[100%] flex flex-row gap-3 pt-1 sm-pt-0">
             <form action="" className=" w-[100%] gap-3 flex">
@@ -56,9 +58,12 @@ const Profile = () => {
          {/*  */}
 
          <CoverPhoto handleprofilepicclick={() => setViewProfilepic(true)} />
-         <div className="flex flex-col-reverse lg:flex-row gap-4 items-start mt-6">
-            <div className="w-full lg:w-[50%] grid grid-cols-2 gap-4 items-start">
-               <div className="pt-4 bg-white rounded-[8px]">
+         <div className="flex flex-col-reverse lg:flex-row gap-4 items-start mt-6 pb-3">
+            <div className="w-full lg:w-[50%] grid grid-cols-2 gap-4 items-start rounded-[8px] pb-3">
+               <div
+                  className="pt-4 rounded-[8px]"
+                  style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+               >
                   <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3">About</h3>
 
                   <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4">
@@ -89,7 +94,10 @@ const Profile = () => {
                   </section>
                </div>
                <div className="space-y-4">
-                  <div className=" bg-white rounded-[8px] overflow-auto h-[10.5rem] pt-4 pb-6">
+                  <div
+                     className=" bg-white rounded-[8px] overflow-auto h-[10.5rem] pt-4 pb-6"
+                     style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+                  >
                      <h3 className="text-[#A303A0]  text-xs font-bold  mb-3 border-gray border-solid border-b-[0.5px] mx-2 sm:mx-4 pb-2">You might know</h3>
                      <section className="mt-3 space-y-2 ml-2 sm:ml-4">
                         {ymk.map((pymk) => {
@@ -108,7 +116,10 @@ const Profile = () => {
                         })}
                      </section>
                   </div>
-                  <div className="pt-4 bg-white rounded-[8px] overflow-auto h-[10.5rem] items-center pb-6">
+                  <div
+                     className="pt-4 rounded-[8px] overflow-auto h-[10.5rem] items-center pb-6"
+                     style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+                  >
                      <h3 className="text-[#A303A0]  text-xs font-bold mb-3 border-b-[0.5px] mx-2 sm:mx-4  border-gray border-solid pb-2">Active</h3>
                      <div className=" mt-4 space-y-2 mx-2 sm:mx-4">
                         {online.map((active) => {
@@ -132,7 +143,10 @@ const Profile = () => {
                   </div>
                </div>
             </div>
-            <div className="grow w-full lg:w-auto bg-white rounded-[8px] h-[27rem] overflow-y-auto">
+            <div
+               className="grow w-full lg:w-auto bg-white rounded-[8px] h-[27rem] overflow-y-auto"
+               style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", color:DarkTheme?"#f7f7f8" : "#A303A0", border:"0.3px solid #f7f7f8"}}
+            >
                <Tablayout />
             </div>
          </div>
