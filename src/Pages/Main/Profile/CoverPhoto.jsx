@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import CoverPh from "../../../Images/CoverPhoto.png";
+import cover from "../../../Images/CoverPhoto.png";
 import {useState} from "react";
 import ProfilePicture from "./ProfilePicture";
 import {UseAuth} from "../../../Utils/AuthContext";
@@ -8,7 +8,7 @@ import localforage from "localforage";
 import {UseTheme} from "../../../Utils/ThemeContext";
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
-   const [CoverP, setCoverP] = useState(CoverPh);
+   const [CoverP, setCoverP] = useState(cover);
    const fileinput = useRef(null);
    const navigate = useNavigate();
    const [SavedData, setSavedData] = useState([]);
@@ -38,7 +38,7 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
             console.log("you changed your cover photo to", imageSrc);
          }, 1500);
       } else {
-         setCoverP(CoverPh);
+         setCoverP(cover);
          console.log("you removed your cover photo");
       }
    };

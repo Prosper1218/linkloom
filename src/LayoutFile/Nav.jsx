@@ -1,4 +1,4 @@
-import {ExitIcon, HamburgerMenuIcon} from "@radix-ui/react-icons";
+import {ExitIcon} from "@radix-ui/react-icons";
 import React, {useContext, useState} from "react";
 import {NavLink, redirect, useNavigate} from "react-router-dom";
 import logo from "../Images/linkloomicon.png";
