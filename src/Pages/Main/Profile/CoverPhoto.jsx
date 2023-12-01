@@ -1,13 +1,13 @@
 import React, {useEffect, useRef} from "react";
+import cover from "../../../Images/coverphoto.png";
 import {useState} from "react";
 import ProfilePicture from "./ProfilePicture";
 import { useNavigate} from "react-router";
 import localforage from "localforage";
 import {UseTheme} from "../../../Utils/ThemeContext";
-import defaultpic from "../../../Images/defaultpic.png"
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
-   const [CoverP, setCoverP] = useState(defaultpic);
+   const [CoverP, setCoverP] = useState(cover);
    const fileinput = useRef(null);
    const navigate = useNavigate();
    const [SavedData, setSavedData] = useState([]);
@@ -37,7 +37,7 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
             console.log("you changed your cover photo to", imageSrc);
          }, 1500);
       } else {
-         setCoverP(defaultpic);
+         setCoverP(cover);
          console.log("you removed your cover photo");
       }
    };
