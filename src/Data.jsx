@@ -1,5 +1,4 @@
 import gallery from "./Images/gallery.png";
-import Message from "./Images/Message.png";
 import Home from "./Images/Home.png";
 import Setting from "./Images/Setting.png";
 import Person from "./Images/Person.png";
@@ -8,7 +7,7 @@ import ymk1 from "./Images/ymk1.png";
 import ymk2 from "./Images/ymk2.png";
 import ymk3 from "./Images/ymk3.png";
 import Post1 from "./Images/post1.png";
-
+import Message from "./Images/mes.png";
 
 export const Links = [
    {
@@ -23,7 +22,7 @@ export const Links = [
       icon: Person,
       to: "/Profile",
    },
-    {
+   {
       id: 3,
       name: "Gallery",
       icon: gallery,
@@ -35,7 +34,7 @@ export const Links = [
       icon: Message,
       to: "/Messages",
    },
-  
+
    {
       id: 5,
       name: "Settings",
