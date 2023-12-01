@@ -3,7 +3,7 @@ import {UserPosts} from "../../../../Data";
 import {DpContext} from "../../../../LayoutFile/MainLayout";
 import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import threedots from "../../../../Images/threedots.png";
-import Loveicon from "../../../../Images/Loveicon.png";
+import Loveicon from "../../../../Images/loveicon.png";
 import commenticon from "../../../../Images/commenticon.png";
 import {UseAuth} from "../../../../Utils/AuthContext";
 import localforage from "localforage";
