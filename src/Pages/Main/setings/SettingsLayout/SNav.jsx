@@ -29,7 +29,7 @@ const SNav = () => {
                   <NavLink key={id} to={to || null} className={({isActive, isPending}) => (isActive ? "activeSettings-link" : null)} id="slinks">
                      <span className=" hidden sm:block">
                         <img src={icon} alt={icon} className=" hidden sm:block w-4 h-4" />
-                     </span>{" "}
+                     </span>
                      {name}
                   </NavLink>
                );
