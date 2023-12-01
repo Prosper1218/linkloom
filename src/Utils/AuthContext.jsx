@@ -4,6 +4,7 @@ import {account} from "../appwriteConfig";
 import {ID} from "appwrite";
 import LoaderC from "../LayoutFile/LoaderC";
 import {Navigate, useNavigate} from "react-router";
+import localforage from "localforage";
 //
 //
 export const USERContext = createContext();
@@ -20,6 +21,7 @@ const AuthContext = ({children}) => {
    useEffect(() => {
       // checkUserStatus();
       setLoading(false);
+     
    }, []);
 
    //SIGN IN A USER
@@ -33,7 +35,7 @@ const AuthContext = ({children}) => {
          setUser(AccountData);
       } catch (error) {
          //     alert('account does not exist pls sign up')
-         console.log("error");
+         alert(error);
       }
       setLoading(false);
    };
@@ -80,6 +82,7 @@ const AuthContext = ({children}) => {
       setUser(null);
       navigate("/Signin");
       console.log("signed out");
+      localforage.removeItem("Details");
    };
 
    // CONTEXT DATA/VALUE

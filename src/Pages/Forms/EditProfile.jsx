@@ -8,7 +8,7 @@ import localforage from "localforage";
 import {UseTheme} from "../../Utils/ThemeContext";
 import {Locale} from "appwrite";
 
-const ProfileSetUp = () => {
+const EditProfile = () => {
    const editref = useRef();
    const [Userinfo, setUserinfo] = useState(null);
    const navigate = useNavigate();
@@ -36,7 +36,9 @@ const ProfileSetUp = () => {
          navigate("/");
       }, 2500);
    };
-   localforage
+
+   if (Userinfo) {
+       localforage
       .setItem("Details", Userinfo)
       .then(() => {
          console.log("saved data to localforage");
@@ -44,11 +46,11 @@ const ProfileSetUp = () => {
       .catch((error) => {
          console.log("there was an error saving user's data");
       });
+   }
+  
 
    const handleDiscard = () => {
-      localforage.setItem("Details", Userinfo);
-      console.log(Userinfo)
-      // navigate(-1);
+      navigate(-1);
    };
    //
    //
@@ -66,7 +68,7 @@ const ProfileSetUp = () => {
                   className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10 text-left pl-4"
                   style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
                >
-                  Setup your Profile
+                  Edit Profile
                </h4>
                <form action="" className=" relative" onSubmit={handlesubmit} ref={editref}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
@@ -98,6 +100,7 @@ const ProfileSetUp = () => {
                      className="w-full h-12 focus:outline-none bg-transparent pl-4 text-xs mb-3 p-2"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Bio..."
+                     required
                   ></textarea>
                   <input
                      type="text"
@@ -112,6 +115,7 @@ const ProfileSetUp = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
                      <select
                         name="gender"
+                        required
                         id="gender"
                         className=" h-8 mb-3 text-xs pl-3 focus:outline-none outline-none"
                         style={{
@@ -145,6 +149,7 @@ const ProfileSetUp = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
                      <select
                         name="relationship"
+                        required
                         id="relationship"
                         className=" h-8 mb-5 text-xs pl-3 outline-none focus:outline-none "
                         style={{
@@ -169,9 +174,16 @@ const ProfileSetUp = () => {
                   </div>
                   <div className="flex justify-left gap-3 font-sans">
                      <button type="submit" className="w-[8rem] h-8 border-none text-[55%] items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] text-white">
-                        Setup Profile
+                        Update Profile
                      </button>
-                   
+                     <button
+                        type="button"
+                        className="w-[8rem] h-8 text-[55%] items-center [font-family:'Inter-Bold',Helvetica] border-[#490057] border-[1px] border-solid"
+                        style={{color: theme === "dark" ? "#F7F7F8" : "#490057"}}
+                        onClick={handleDiscard}
+                     >
+                        Discard
+                     </button>
                   </div>
                </form>
             </div>
@@ -179,9 +191,4 @@ const ProfileSetUp = () => {
       </div>
    );
 };
-
-export default ProfileSetUp;
-//  <form action="" onSubmit={handlesubmit} ref={editref}>
-//             <input type="text" name="name" id="name" style={{border: "1px solid red"}} />
-//             <button type="submit">submit</button>
-//          </form>
+export default EditProfile;

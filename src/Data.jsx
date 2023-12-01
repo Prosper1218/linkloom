@@ -23,18 +23,19 @@ export const Links = [
       icon: Person,
       to: "/Profile",
    },
-   {
+    {
       id: 3,
-      name: "Message",
-      icon: Message,
-      to: "/Messages",
-   },
-   {
-      id: 4,
       name: "Gallery",
       icon: gallery,
       to: "/Gallery",
    },
+   {
+      id: 4,
+      name: "Message",
+      icon: Message,
+      to: "/Messages",
+   },
+  
    {
       id: 5,
       name: "Settings",

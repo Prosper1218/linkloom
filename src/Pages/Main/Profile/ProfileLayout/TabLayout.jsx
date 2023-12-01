@@ -31,8 +31,8 @@ const TabLayout = () => {
       },
    ];
    return (
-      <div className="mx-2 sm:mx-4 pb-6 pt-2">
-         <div className="flex w-[100%] gap-4 justify-start py-2 border-b-[0.5px] ml-4  border-gray border-solid " id="tabnav">
+      <div className="mx-1 pb-6 pt-2">
+         <div className="flex w-[100%] gap-4 justify-start py-2 border-b-[0.5px] mx-4  border-gray border-solid " id="tabnav">
             {Links.map((items) => {
                const {id, name, setto, to, len} = items;
                return (
@@ -42,7 +42,7 @@ const TabLayout = () => {
                );
             })}
          </div>
-         <section>{ActiveTab}</section>
+         <section >{ActiveTab}</section>
       </div>
    );
 };

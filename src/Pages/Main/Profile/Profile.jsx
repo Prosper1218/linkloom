@@ -22,7 +22,7 @@ const Profile = () => {
    const [ViewProfilepic, setViewProfilepic] = useState(false);
    const {User, EditedDetails} = UseAuth();
    const [SavedData, setSavedData] = useState([]);
-   const {DarkTheme} = UseTheme();
+   const {theme} = UseTheme();
 
    localforage
       .getItem("Details")
@@ -37,9 +37,11 @@ const Profile = () => {
       .catch((error) => {
          console.log(error);
       });
+   // let joinedD = new Date().toTimeString()
+   let joinedD = new Date().toDateString()
 
    return (
-      <div style={{backgroundColor: DarkTheme ? "#2222" : "#F7F7F8", color: DarkTheme ? "#F7F7F8" : "#2222"}}>
+      <div style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8", color: theme === "dark" ? "#F7F7F8" : "#2222"}}>
          {ViewProfilepic && <VeiwDp curr={CurrentDp} Setvdp={setViewProfilepic} />}
          <div className="w-[100%] flex flex-row gap-3 pt-1 sm-pt-0">
             <form action="" className=" w-[100%] gap-3 flex">
@@ -62,41 +64,42 @@ const Profile = () => {
             <div className="w-full lg:w-[50%] grid grid-cols-2 gap-4 items-start rounded-[8px] pb-3">
                <div
                   className="pt-4 rounded-[8px]"
-                  style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+                  style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",}}
+                  
                >
                   <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3">About</h3>
 
-                  <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4">
+                  <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={user} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.gender}</p>
+                        <img src={user} alt="dp" className="w-4 h-4" /> <p className="text-[65%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.gender}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={birthdaycake} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.date}</p>
+                        <img src={birthdaycake} alt="dp" className="w-4 h-4" /> <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.date}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={location} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.location}</p>
+                        <img src={location} alt="dp" className="w-4 h-4" /> <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.location}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={mail} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0] flex-wrap grow">{User.email}</p>
+                        <img src={mail} alt="dp" className="w-4 h-4" /> <p className="text-[65%] flex-wrap grow" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{User.email}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={relationship} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.relationship}</p>
+                        <img src={relationship} alt="dp" className="w-4 h-4" /> <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.relationship}</p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
-                        <img src={suitcase} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.occupation}</p>
+                        <img src={suitcase} alt="dp" className="w-4 h-4" /> <p className="text-[65%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.occupation}</p>
                      </div>
                      <div className="flex flex-row py-2 gap-2">
-                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">{SavedData.number}</p>
+                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.number}</p>
                      </div>
                      <div className="flex flex-row py-2 gap-2">
-                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%] text-[#A303A0]">Joined:{User ? User.registration : "hello"}</p>
+                        <img src={phone} alt="dp" className="w-4 h-4" /> <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>Joined:{User.registration ? User.registration : joinedD}</p>
                      </div>
                   </section>
                </div>
                <div className="space-y-4">
                   <div
                      className=" bg-white rounded-[8px] overflow-auto h-[10.5rem] pt-4 pb-6"
-                     style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+                     style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px"}}
                   >
                      <h3 className="text-[#A303A0]  text-xs font-bold  mb-3 border-gray border-solid border-b-[0.5px] mx-2 sm:mx-4 pb-2">You might know</h3>
                      <section className="mt-3 space-y-2 ml-2 sm:ml-4">
@@ -108,8 +111,8 @@ const Profile = () => {
                                     <img src={profile} alt={name} className="w-full h-full object-cover" />
                                  </div>
                                  <div className="grow leading-3">
-                                    <p className="text-[70%] text-[#A303A0] font-bold capitalize overflow-y-hidden"> {name} </p>
-                                    <p className="text-[58%] text-[#A303A0] overflow-y-hidden"> {email}</p>
+                                    <p className="text-[70%] font-bold capitalize overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}> {name} </p>
+                                    <p className="text-[58%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}> {email}</p>
                                  </div>
                               </div>
                            );
@@ -118,7 +121,7 @@ const Profile = () => {
                   </div>
                   <div
                      className="pt-4 rounded-[8px] overflow-auto h-[10.5rem] items-center pb-6"
-                     style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", border: "0.2px solid #f7f7f8"}}
+                     style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",}}
                   >
                      <h3 className="text-[#A303A0]  text-xs font-bold mb-3 border-b-[0.5px] mx-2 sm:mx-4  border-gray border-solid pb-2">Active</h3>
                      <div className=" mt-4 space-y-2 mx-2 sm:mx-4">
@@ -131,10 +134,10 @@ const Profile = () => {
                                  </div>
                                  <div className="grow flex items-center justify-between">
                                     <div className="leading-3">
-                                       <p className="text-[70%] text-[#A303A0] font-bold capitalize overflow-y-hidden"> {name} </p>
-                                       <p className="text-[58%] text-[#A303A0] overflow-y-hidden"> {status || `last seen ${when}`}</p>
+                                       <p className="text-[70%]  font-bold capitalize overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}> {name} </p>
+                                       <p className="text-[58%]  overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}> {status || `last seen ${when}`}</p>
                                     </div>
-                                    <div className="text-[55%] text-[#A303A0]  hidden xl:block  ">{when}</div>
+                                    <div className="text-[55%]   hidden xl:block " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{when}</div>
                                  </div>
                               </div>
                            );
@@ -145,7 +148,12 @@ const Profile = () => {
             </div>
             <div
                className="grow w-full lg:w-auto bg-white rounded-[8px] h-[27rem] overflow-y-auto"
-               style={{backgroundColor: DarkTheme ? "#222222" : "#F7F7F8", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px", color:DarkTheme?"#f7f7f8" : "#A303A0", border:"0.3px solid #f7f7f8"}}
+               style={{
+                  backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white",
+                  boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",
+                  color: theme === "dark" ? "#f7f7f8" : "#A303A0",
+                  // border: "0.3px solid #f7f7f8",
+               }}
             >
                <Tablayout />
             </div>

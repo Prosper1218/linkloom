@@ -8,14 +8,14 @@ export const DpContext = createContext();
 
 const MainLayout = () => {
    const [CurrentDp, setCurrentDp] = useState(dp);
-   const {DarkTheme} = UseTheme()
+   const {theme} = UseTheme()
    return (
       <DpContext.Provider value={{CurrentDp, setCurrentDp, dp}}>
-         <div className="min-h-[100vh] flex flex-row max-w-[100%]">
+         <div className="min-h-[100vh] flex flex-row max-w-[100%]"  style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}} >
             <div>
                <Nav />
             </div>
-            <div className=" sm:p-4 sm:ml-32 w-full min-h-[100vh]" style={{border: "1px solid blue", backgroundColor:DarkTheme?"#222222":"#F7F7F8"}}>
+            <div className=" sm:p-4 sm:ml-[10rem] w-full min-h-[100vh]" style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}}>
                <Outlet />
             </div>
          </div>
@@ -23,4 +23,6 @@ const MainLayout = () => {
    );
 };
 
-export default MainLayout;
+export default MainLayout; 
+
+// style={{backgroundColor: theme ? "#2222" : "", color: theme === "dark" ? "#F7F7F8" : "#2222"}} 

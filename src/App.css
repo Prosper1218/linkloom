@@ -31,7 +31,7 @@ body {
 }
 #default-sidebar a.active-link {
    color: #fbb03b;
-   background-image: linear-gradient(to right, #fbb03b, transparent);
+   background-image: linear-gradient(to right,transparent, #fbb03b, transparent);
    transition: ease-out 0.2s;
 }
 #default-sidebar a:hover {
@@ -44,7 +44,7 @@ body {
    padding: 4px 0.6rem 4px 0rem;
    outline: none;
    font-weight: bold;
-   /* color: #d8d8d8; */
+   /* color: #e5e5e5; */
    
 }
 /* #tabnav a.active-link{
@@ -65,7 +65,7 @@ body {
    100%{
       scale:0.9;
    }
-}
+}  
 .activeSettings-link{
    background-color:#480057;
    color: white;
@@ -79,4 +79,18 @@ body {
    padding-left: 1rem;
    display: flex;
    gap: 0.3rem;
+   align-items: center;
 }
+#slinks:nth-child(1){
+   display: none;
+   border: 1px solid green;
+}
+
+@media (max-width: 640px) {
+   /* … */
+   #slinks{
+      padding: 0.3 0rem 0.3rem 0rem;
+      /* padding-left: 1rem; */
+    
+   }
+ }

@@ -31,7 +31,7 @@ const Nav = () => {
          </div>
          <aside
             id="default-sidebar"
-            className={`fixed bottom-0 sm:top-0 sm:left-0 z-40 w-full sm:w-[8rem] h-12 sm:h-screen translate-x-0 transition ease-in-out delay-150 bg-[#480057] overflow-y-hidden`}
+            className={`fixed bottom-0 sm:top-0 sm:left-0 z-40 w-full sm:w-[10rem] h-12 sm:h-screen translate-x-0 transition ease-in-out delay-150 bg-[#480057] overflow-y-hidden`}
             aria-label="Sidebar"
          >
             <div className="h-full overflow-y-hidden bg-rgba(73, 0, 87, 1)-800 ">

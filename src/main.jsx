@@ -14,6 +14,7 @@ import Messages from "./Pages/Main/Messages.jsx";
 import PrivateRoute from "./Utils/PrivateRoute.jsx";
 import AuthContext from "./Utils/AuthContext.jsx";
 import ProfileSetUp from "./Pages/Forms/ProfileSetUp.jsx";
+import EditProfile from "./Pages/Forms/EditProfile.jsx";
 import PrivateRoutesec from "./Utils/PrivateRoutesec.jsx";
 import ThemeContext from "./Utils/ThemeContext.jsx";
 import AccountS from "./Pages/Main/setings/SettingsLayout/AccountS.jsx";
@@ -41,7 +42,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         <Route path="/Gallery" element={<Gallery />} />
                         <Route path="/Activity" element={<Activity />} />
                         <Route path="/Messages" element={<Messages />} />
-                        <Route path="/Settings" element={<SettingsLayout />}>
+
+                        <Route path="/Settings"  element={<SettingsLayout />}>
                            {/* <Route path="/Settings" element={<Settings />} /> */}
                            <Route path="/Settings/AccountSettings" element={<AccountS />} />
                            <Route path="/Settings/Appearance" element={<ThemeS />} />
@@ -53,7 +55,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   </Route>
                   {/* PRIVATE ROUTE 2 */}
                   <Route element={<PrivateRoutesec />}>
-                     <Route path="/EditProfile" element={<ProfileSetUp />} />
+                     <Route path="/ProfileSetup" element={<ProfileSetUp />} />
+                     <Route path="/EditProfile" element={<EditProfile />} />
+
                   </Route>
                </Routes>
             </AuthContext>

@@ -23,7 +23,7 @@ const SignUp = () => {
    const {DarkTheme} = UseTheme();
    useEffect(() => {
       if (User) {
-         navigate("/EditProfile");
+         navigate("/ProfileSetup");
       }
    }, []);
 
@@ -69,7 +69,7 @@ const SignUp = () => {
                   className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10"
                   style={{color: DarkTheme ? "#F7F7F8" : "#222222"}}
                >
-                  Sign Up !
+                  Sign Up!
                </h4>
                <form action="" className="px-4 relative" onSubmit={handlesubmit} ref={SignUpRef}>
                   <div className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-2">

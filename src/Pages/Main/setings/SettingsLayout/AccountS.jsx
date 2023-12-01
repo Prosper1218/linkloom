@@ -1,8 +1,10 @@
 import React from 'react'
+import { UseTheme } from '../../../../Utils/ThemeContext'
 
 const AccountS = () => {
+  const {theme} =UseTheme()
   return (
-    <div>AccountS</div>
+    <div style={{color:theme === "dark" ? "white" : "black"}}>Account settings</div>
   )
 }
 

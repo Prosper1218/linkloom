@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import { UseTheme } from "../../../../Utils/ThemeContext";
 
 const PassSecS = () => {
-  return (
-    <div>PassSecS</div>
-  )
-}
+   const {theme} = UseTheme();
+   return <div style={{color: theme === "dark" ? "white" : "black"}}>Security settings</div>;
+};
 
-export default PassSecS
+export default PassSecS;
