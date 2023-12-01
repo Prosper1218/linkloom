@@ -7,6 +7,7 @@ import linkloomicon2 from "../Images/linkloomicon2.png";
 import {Links} from "../Data";
 import {DpContext} from "./MainLayout";
 import {UseAuth} from "../Utils/AuthContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Nav = () => {
    const [NavActive, setNavActive] = useState(false);
@@ -52,7 +53,7 @@ const Nav = () => {
                               to={to}
                            >
                               <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-center">
-                                 {icon ? <img src={icon} alt={name} className="w-7 sm:w-5 h-7 sm:h-5 object-cover" /> : ""}
+                                 {icon ? <LazyLoadImage src={icon} alt={name} className="w-7 sm:w-5 h-7 sm:h-5 object-cover" /> : ""}
                               </div>
                               <span className="hidden sm:block text-white font-sans"> {name}</span>
                            </NavLink>

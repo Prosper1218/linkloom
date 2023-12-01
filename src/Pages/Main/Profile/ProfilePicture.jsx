@@ -1,6 +1,7 @@
 import React, {useContext, useRef, useState} from "react";
 import editcamera from "../../../Images/camera.png";
 import { DpContext } from "../../../LayoutFile/MainLayout";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ProfilePicture = ({handleprofilepicC}) => {
 //    const [Currentdp, setCurrentdp] = useState(bigdp);
@@ -29,7 +30,7 @@ const ProfilePicture = ({handleprofilepicC}) => {
       <>
          <img src={CurrentDp} alt="bigdp" className="bg-[#fbb03b] rounded-full w-[100%] h-[100%] object-cover" onClick={handleprofilepicC}/>
          <button className="absolute  top-[3.9rem] sm:top-[5.5rem] right-3 bg-[#A303A0] p-2 rounded-full" onClick={handleclick}>
-            <img src={editcamera} alt="" className="w-4" />
+            <LazyLoadImage src={editcamera} alt="" className="w-4" />
          </button>
          <input type="file" name="dp" id="dp" accept="/image*" ref={inputref} className="hidden" onChange={handlechange} />
       </>
