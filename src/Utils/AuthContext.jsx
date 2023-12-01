@@ -51,7 +51,7 @@ const AuthContext = ({children}) => {
          const AccountDetails = account.get();
          setUser(AccountDetails);
       } catch (error) {
-         console.log(error, "check details and try again");
+         alert(error, "check details and try again");
       }
       setLoading(false);
    };
