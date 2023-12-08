@@ -6,7 +6,6 @@ import logo from "../../Images/linkloomlogosec.png";
 import linkloomicon2 from "../../Images/linkloomicon2.png";
 import localforage from "localforage";
 import {UseTheme} from "../../Utils/ThemeContext";
-import {Locale} from "appwrite";
 
 const EditProfile = () => {
    const editref = useRef();

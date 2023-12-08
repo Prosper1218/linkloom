@@ -13,19 +13,7 @@ const Posts = () => {
    const {User} = UseAuth();
    const [SavedData, setSavedData] = useState([]);
    const {theme} = UseTheme();
-   localforage
-      .getItem("Details")
-      .then((FedData) => {
-         if (FedData) {
-            // console.log(FedData);
-            setSavedData(FedData);
-         } else {
-            console.error("error, no data found");
-         }
-      })
-      .catch((error) => {
-         console.log(error);
-      });
+ 
 
    return (
       <div className="space-y-2 mx-2 sm:mx-4">
@@ -40,7 +28,7 @@ const Posts = () => {
                      <div className="flex justify-between grow items-center">
                         <div className="leading-4">
                            <p className="text-xs font-bold" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                              {SavedData.name} {SavedData.Lastname}
+                              username
                            </p>
                            <p className="text-[50%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{time}</p>
                         </div>
@@ -53,7 +41,7 @@ const Posts = () => {
                      <img src={postimage} alt="postimg" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex gap-1 items-center justify-start mb-2">
-                     <p className="text-xs font-bold " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.name}</p>
+                     <p className="text-xs font-bold " style={{color: theme === "dark" ? "white" : "#A303A0"}}>username</p>
                      <p className="text-[55%]  pt-[0.21rem]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{caption}</p>
                   </div>
                   <div className="flex justify-start items-center gap-2">

@@ -20,13 +20,13 @@ const SignUp = () => {
    const [ThemPassMatch, setThemPassMatch] = useState(true);
    const SignUpRef = useRef();
    const {SignUpUser, User} = UseAuth();
-   const {DarkTheme} = UseTheme();
+   const {theme} = UseTheme();
+
    useEffect(() => {
       if (User) {
          navigate("/ProfileSetup");
       }
-   }, []);
-
+   }, [User]);
 
    const togglepassword2 = () => {
       setseepass(!seepass);
@@ -37,7 +37,16 @@ const SignUp = () => {
       const Name = SignUpRef.current.name.value;
       const Email = SignUpRef.current.email.value;
       const Password = SignUpRef.current.password.value;
+      //
+      // const Location = SignUpRef.current.location.value;
+      // const Gender = SignUpRef.current.gender.value;
+      // const Date = SignUpRef.current.date.value;
+      // const Relationship = SignUpRef.current.relationshipstatus.value;
+      // const Job = SignUpRef.current.job.value;
+      // const Bio = SignUpRef.current.bio.value;
+
       let UserData = {Name, Email, Password};
+      // console.log(UserData)
       SignUpUser(UserData);
    };
    const handlepassword1change = () => {
@@ -56,29 +65,32 @@ const SignUp = () => {
    };
 
    return (
-      <div className="min-h-[100vh] pt-4" style={{backgroundColor: DarkTheme ? "#222222" : "F7F7F8"}}>
-         <Link to={"/"}>
-            <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden pl-4">
-               <img src={linkloomicon2} alt={logo} className="w-[4rem] h-[4rem] flex-none" />
-               <img src={logo} alt="" className="w-32" />
-            </div>
-         </Link>
-         <div className=" w-full  flex flex-row justify-center text-center px-4 ">
-            <div className=" w-full sm:w-[450px] h-[370px] text-white box mt-28 overflow-y-hidden ">
+      <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8",}}>
+         <div className=" w-full h-screen py-8  flex flex-row justify-center text-center">
+            <div
+               className=" w-full sm:w-[400px] h-[90vh] text-white overflow-y-hidden px-5 sm:px-6 pt-3"
+               style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",}}
+            >
+               <Link to={"/"}>
+                  <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
+                     <img src={linkloomicon2} alt={logo} className="w-[3rem] h-[3rem] flex-none" />
+                     <img src={logo} alt="" className="w-28" />
+                  </div>
+               </Link>
                <h4
-                  className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10"
-                  style={{color: DarkTheme ? "#F7F7F8" : "#222222"}}
+                  className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-44"
+                  style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
                >
                   Sign Up!
                </h4>
-               <form action="" className="px-4 relative" onSubmit={handlesubmit} ref={SignUpRef}>
+               <form action="" className=" relative h-full" onSubmit={handlesubmit} ref={SignUpRef}>
                   <div className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-2">
                      <input
                         type="text"
                         name="name"
                         id="name"
                         className={`w-full h-8 focus:outline-none rounded-md bg-transparent pl-4 text-xs mb-3`}
-                        style={{color: DarkTheme ? "#F7F7F8" : "#222222", border: DarkTheme ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+                        style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme==="dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Username..."
                         required
                      />
@@ -87,17 +99,18 @@ const SignUp = () => {
                         name="email"
                         id="email"
                         className="w-full h-8 focus:outline-none rounded-md bg-transparent pl-4 text-xs mb-3"
-                        style={{color: DarkTheme ? "#F7F7F8" : "#222222", border: DarkTheme ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+                        style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme==="dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Email..."
                         required
                      />
                   </div>
+
                   <input
-                     type={ "password"}
+                     type={"password"}
                      name="password"
                      id="password"
                      className="w-full h-8 focus:outline-none rounded-md bg-transparent pl-4 text-xs relative"
-                     style={{color: DarkTheme ? "#F7F7F8" : "#222222", border: DarkTheme ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+                     style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme==="dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Password..."
                      ref={Password1ref}
                      onChange={handlepassword1change}
@@ -110,12 +123,12 @@ const SignUp = () => {
                      name=" confirm Password"
                      id="confirm Password"
                      className="w-full h-8 focus:outline-none rounded-md bg-transparent pl-4 text-xs relative"
-                     style={{color: DarkTheme ? "#F7F7F8" : "#222222", border: DarkTheme ? "0.5px solid #F7F7F8 " : "0.5px solid #222222"}}
+                     style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme==="dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222"}}
                      placeholder="Confirm Password..."
                      ref={Password2ref}
                      onChange={handlepassword2change}
                   />
-                  <button type="button" className="hidden sm:block absolute top-[6.3rem] right-8 bg-white rounded-sm px-[1px]" onClick={togglepassword2}>
+                  <button type="button" className="hidden sm:block absolute top-[6.3rem] right-3 bg-white rounded-sm px-[1px]" onClick={togglepassword2}>
                      <img src={seepass ? Hidei : Seei} alt="hide/see icon" className="w-[1.2rem]" />
                   </button>
                   <div className=" text-left text-xs font-thin h-5 pl-2 ">{ThemPassMatch ? "" : <p className="text-red-600 tex-[78%]">Passwords don't match!</p>}</div>
@@ -127,8 +140,7 @@ const SignUp = () => {
                   >
                      SIGN UP
                   </button>
-
-                  <p className=" text-left text-xs font-thin mt-1 mb-4 pl-2 " style={{color: DarkTheme ? "#F7F7F8" : "black"}}>
+                  <p className=" text-left text-xs font-thin mt-1 mb-4 pl-2 " style={{color: theme==="dark" ? "#F7F7F8" : "black"}}>
                      have an account?
                      <Link to={"/SignIn"} className="underline ml-1">
                         Sign In
@@ -144,3 +156,83 @@ const SignUp = () => {
 export default SignUp;
 
 // cloudinary
+
+// <input
+// type="text"
+// name="location"
+// id="location"
+// className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3 rounded-md"
+// style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+// placeholder="Location..."
+// required
+// />
+// <div className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-3">
+// <div className="flex flex-col">
+//    {/* <label htmlFor="gender" className="text-left text-[70%] font-serif pl-1" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+//       Gender:
+//    </label> */}
+
+//    <select
+//       name="gender"
+//       id="gender"
+//       className=" h-8 mb-2 text-xs pl-3 focus:outline-none outline-none rounded-md"
+//       style={{
+//          color: theme === "dark" ? "#F7F7F8" : "#222222",
+//          border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 ",
+//          backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8",
+//       }}
+//    >
+//       <option value="Male">Male</option>
+//       <option value="Female">Female</option>
+//    </select>
+// </div>
+// <div className="flex flex-col">
+//    {/* <label htmlFor="date" className="text-left text-[70%] font-serif pl-1" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+//       Date of Birth:
+//    </label> */}
+//    <input
+//       type="date"
+//       name="date"
+//       id="date"
+//       className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs utline-none pr-1 rounded-md mb-2"
+//       style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+//       placeholder="date..."
+//       required
+//    />
+// </div>
+// <div className="flex flex-col ">
+//    <select
+//       name="relationshipstatus"
+//       id="relationshipstatus"
+//       className=" h-8 mb-2 text-xs pl-3 focus:outline-none outline-none rounded-md"
+//       style={{
+//          color: theme === "dark" ? "#F7F7F8" : "#222222",
+//          border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 ",
+//          backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8",
+//       }}
+//    >
+//       <option value="Single">Single</option>
+//       <option value="Married">Married</option>
+//       <option value="In a relationship">In a relationship</option>
+//    </select>
+// </div>
+// </div>
+// <textarea
+// name="job"
+// id="job"
+// cols="20"
+// rows="15"
+// className="w-full h-12 focus:outline-none bg-transparent pl-4 text-xs mb-1 mt-1 p-2 rounded-md"
+// style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+// placeholder="Job Description..."
+// ></textarea>
+
+// <textarea
+// name="bio"
+// id="bio"
+// cols="20"
+// rows="15"
+// className="w-full h-12 focus:outline-none bg-transparent pl-4 text-xs mb-2 p-2 rounded-md"
+// style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+// placeholder="Bio..."
+// ></textarea>

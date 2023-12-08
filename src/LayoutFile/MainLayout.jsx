@@ -11,7 +11,7 @@ const MainLayout = () => {
    const {theme} = UseTheme()
    return (
       <DpContext.Provider value={{CurrentDp, setCurrentDp, dp}}>
-         <div className="min-h-[100vh] flex flex-row max-w-[100%]"  style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}} >
+         <div className="min-h-[100vh] flex flex-row max-w-[100%] "  style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}} >
             <div>
                <Nav />
             </div>

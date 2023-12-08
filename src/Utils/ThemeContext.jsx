@@ -1,7 +1,4 @@
-import localforage from "localforage";
-import {document} from "postcss";
 import React from "react";
-import {useEffect} from "react";
 import {createContext, useContext, useState} from "react";
 
 export const ThemeC = createContext('light');
@@ -22,12 +19,11 @@ export const UseTheme = () => {
    return useContext(ThemeC);
 };
 const getSavedTheme = () => {
-  // Retrieve the theme preference from local storage
   return localStorage.getItem("theme");
 };
 
 const saveTheme = (theme) => {
-  // Save the theme preference in local storage
   localStorage.setItem("theme", theme);
 };
 export default ThemeContext;
+// srt

@@ -1,10 +1,10 @@
 import React from "react";
 import {useContext, useState, createContext, useEffect} from "react";
-import {account} from "../appwriteConfig";
-import {ID} from "appwrite";
 import LoaderC from "../LayoutFile/LoaderC";
 import {Navigate, useNavigate} from "react-router";
 import localforage from "localforage";
+import {auth} from "../firebase";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
 //
 //
 export const USERContext = createContext();
@@ -19,56 +19,48 @@ const AuthContext = ({children}) => {
    //
    // USEEFFECT
    useEffect(() => {
-      // checkUserStatus();
+      const checkstatus = onAuthStateChanged(auth, (myuser) => {
+         if (myuser) {
+            setUser(myuser);
+         } else {
+            setUser(null);
+         }
+      });
       setLoading(false);
-     
+      return () => {
+         checkstatus();
+      };
    }, []);
 
    //SIGN IN A USER
    //SIGN IN A USER
    //SIGN IN A USER
-   const SignInUser = async (UserData) => {
+   const SignInUser = (UserData) => {
       setLoading(true);
-      try {
-         const response = await account.createEmailSession(UserData.Email, UserData.Password);
-         const AccountData = await account.get();
-         setUser(AccountData);
-      } catch (error) {
-         //     alert('account does not exist pls sign up')
-         alert(error);
-      }
+      signInWithEmailAndPassword(auth, UserData.Email, UserData.Password)
+         .then((userCredentials) => {
+            // console.log(userCredentials);
+            setUser(userCredentials);
+            console.log(User, userCredentials);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
       setLoading(false);
    };
    // SignUP A USER
    // SignUP A USER
    // SignUP A USER
-   const SignUpUser = async (UserData) => {
+   const SignUpUser = (UserData) => {
       setLoading(true);
-      try {
-         const response = await account.create(ID.unique(), UserData.Email, UserData.Password, UserData.Name);
-         console.log(response);
-         await account.createEmailSession(UserData.Email, UserData.Password);
-         const AccountDetails = account.get();
-         setUser(AccountDetails);
-      } catch (error) {
-         alert(error, "check details and try again");
-      }
-      setLoading(false);
-   };
-   // Check uSer status
-   // Check uSer status
-   // Check uSer status
-   const checkUserStatus = async () => {
-      setLoading(true);
-      try {
-         let AccountData = account.get("current");
-         setUser(AccountData);
-      } catch (error) {
-         console.log("error");
-         setUser(null);
-         navigate("/SignIn");
-         return null;
-      }
+      createUserWithEmailAndPassword(auth, UserData.Email, UserData.Password)
+         .then((userinfo) => {
+            console.log(userinfo);
+            setUser(userinfo);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
 
       setLoading(false);
    };
@@ -78,11 +70,13 @@ const AuthContext = ({children}) => {
    // LOGOUT USER
 
    const Logout = async () => {
-      await account.deleteSession("current");
-      setUser(null);
-      navigate("/Signin");
-      console.log("signed out");
-      localforage.removeItem("Details");
+      signOut(auth)
+         .then(() => {
+            console.log("signed out");
+         })
+         .catch((error) => {
+            console.log(error);
+         });
    };
 
    // CONTEXT DATA/VALUE
@@ -93,7 +87,6 @@ const AuthContext = ({children}) => {
       User,
       SignInUser,
       SignUpUser,
-      EditedDetails,
       Logout,
    };
 

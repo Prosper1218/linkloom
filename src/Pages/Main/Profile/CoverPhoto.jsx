@@ -14,18 +14,7 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const {theme} = UseTheme();
 
    //
-   localforage
-      .getItem("Details")
-      .then((FedData) => {
-         if (FedData) {
-            setSavedData(FedData);
-         } else {
-            console.error("error, no data found");
-         }
-      })
-      .catch((error) => {
-         console.log(error);
-      });
+ 
 
    const handleFileChange = (event) => {
       const imgfile = event.target.files[0];
@@ -76,9 +65,9 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
             <div className="relative flex flex-row justify-between  px-[1rem] sm:px-[1.9rem]">
                <div className="ml:0 sm:ml-3 pr-6 leading-3 pt-2">
                   <p className="font-sans font-bold text-lg" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                     {SavedData.name} {SavedData.Lastname}
+                     username
                   </p>
-                  <p className=" font-sans text-[65%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{SavedData.bio}</p>
+                  <p className=" font-sans text-[65%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>bio</p>
                </div>
                <div>
                   <button

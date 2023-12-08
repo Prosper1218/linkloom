@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router";
 import {useRef, useContext, useState} from "react";
 import {UseAuth} from "../../Utils/AuthContext";
@@ -6,15 +6,17 @@ import logo from "../../Images/linkloomlogosec.png";
 import linkloomicon2 from "../../Images/linkloomicon2.png";
 import localforage from "localforage";
 import {UseTheme} from "../../Utils/ThemeContext";
-import {Locale} from "appwrite";
+import {ref, set} from "firebase/database";
+import {db} from "../../firebase";
 
 const ProfileSetUp = () => {
    const editref = useRef();
-   const [Userinfo, setUserinfo] = useState(null);
    const navigate = useNavigate();
    const {theme} = UseTheme();
+   const {User} = UseAuth();
 
    //
+
    //
 
    const handlesubmit = (e) => {
@@ -30,26 +32,30 @@ const ProfileSetUp = () => {
       const relationship = editref.current.relationship.value;
 
       const editDetails = {name, Lastname, bio, occupation, gender, date, location, number, relationship};
-      setUserinfo(editDetails);
       // console.log(editDetails);
+
+      // console.log(uid);
+      const uid = User.uid;
+
+      set(ref(db, `${uid}`), {
+         editDetails,
+         // uid,
+      })
+         .then(() => {
+            console.log("successful");
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+
       setTimeout(() => {
          navigate("/");
       }, 2500);
    };
-   localforage
-      .setItem("Details", Userinfo)
-      .then(() => {
-         console.log("saved data to localforage");
-      })
-      .catch((error) => {
-         console.log("there was an error saving user's data");
-      });
+   // useEffect(() => {
+   //  console.log(User.uid)
+   // }, [])
 
-   const handleDiscard = () => {
-      localforage.setItem("Details", Userinfo);
-      console.log(Userinfo)
-      // navigate(-1);
-   };
    //
    //
    //
@@ -171,7 +177,6 @@ const ProfileSetUp = () => {
                      <button type="submit" className="w-[8rem] h-8 border-none text-[55%] items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] text-white">
                         Setup Profile
                      </button>
-                   
                   </div>
                </form>
             </div>
