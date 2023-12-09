@@ -2,19 +2,23 @@ import React, {useEffect, useRef} from "react";
 import cover from "../../../Images/coverphoto.png";
 import {useState} from "react";
 import ProfilePicture from "./ProfilePicture";
-import { useNavigate} from "react-router";
+import {useNavigate} from "react-router";
 import localforage from "localforage";
 import {UseTheme} from "../../../Utils/ThemeContext";
+import {auth, store} from "../../../firebase";
+import {onAuthStateChanged} from "firebase/auth";
+import {UseAuth} from "../../../Utils/AuthContext";
+import {doc, getDoc} from "firebase/firestore";
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const [CoverP, setCoverP] = useState(cover);
    const fileinput = useRef(null);
    const navigate = useNavigate();
-   const [SavedData, setSavedData] = useState([]);
    const {theme} = UseTheme();
+   const [UserData, setUserData] = useState({});
+   const {User} = UseAuth();
 
    //
- 
 
    const handleFileChange = (event) => {
       const imgfile = event.target.files[0];
@@ -34,6 +38,26 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const handlechoosep = () => {
       fileinput.current.click();
    };
+   useEffect(() => {
+      onAuthStateChanged(auth, (userdata) => {
+         //  console.log(userdata.uid);
+
+         if (userdata) {
+            const docRef = doc(store, "users", `${userdata.uid}`);
+            const docSnap = getDoc(docRef)
+               .then((info) => {
+                  // console.log(info.data());
+                  setUserData(info.data());
+               })
+               .catch((error) => {
+                  console.log(error);
+               });
+         } else {
+            console.log("data not set yet");
+         }
+      });
+   }, [User]);
+
    return (
       <div
          style={{
@@ -65,9 +89,11 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
             <div className="relative flex flex-row justify-between  px-[1rem] sm:px-[1.9rem]">
                <div className="ml:0 sm:ml-3 pr-6 leading-3 pt-2">
                   <p className="font-sans font-bold text-lg" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                     username
+                     {UserData.Firstname} {UserData.Lastname}
                   </p>
-                  <p className=" font-sans text-[65%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>bio</p>
+                  <p className=" font-sans text-[65%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                     {UserData.Bio}
+                  </p>
                </div>
                <div>
                   <button

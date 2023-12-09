@@ -23,6 +23,15 @@ import PassSecS from "./Pages/Main/setings/SettingsLayout/PassSecS.jsx";
 import SettingsLayout from "./Pages/Main/setings/SettingsLayout/SettingsLayout.jsx";
 import MessageS from "./Pages/Main/setings/SettingsLayout/MessageS.jsx";
 import Notifications from "./Pages/Main/setings/SettingsLayout/Notifications.jsx";
+import FormLayout from "./Pages/Forms/ProfileSetupForms/FormLayout.jsx";
+import FNandLN from "./Pages/Forms/ProfileSetupForms/FNandLN.jsx";
+import Gender from "./Pages/Forms/ProfileSetupForms/GenderF.jsx";
+import Occupation from "./Pages/Forms/ProfileSetupForms/Occupation.jsx";
+import Dob from "./Pages/Forms/ProfileSetupForms/Dob.jsx";
+import Location from "./Pages/Forms/ProfileSetupForms/Location.jsx";
+import RelationshipStat from "./Pages/Forms/ProfileSetupForms/RelationshipStat.jsx";
+import Bio from "./Pages/Forms/ProfileSetupForms/Bio.jsx";
+import NumberF from "./Pages/Forms/ProfileSetupForms/NumberF.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
@@ -31,8 +40,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <AuthContext>
                <Routes>
                   {/* FORMS ROUTE */}
+
+                  <Route element={<FormLayout />}>
+                     <Route path="/SignUp" element={<SignUp />} />
+                     <Route path="/setup/Names" element={<FNandLN />} />
+                     <Route path="/setup/YourGender" element={<Gender />} />
+                     <Route path="/setup/Occupation" element={<Occupation />} />
+                     <Route path="/setup/Dob" element={<Dob />} />
+                     <Route path="/setup/Location" element={<Location />} />
+                     <Route path="/setup/RelationshipStatus" element={<RelationshipStat />} />
+                     <Route path="/setup/Number" element={<NumberF />} />
+                     <Route path="/setup/Bio" element={<Bio />} />
+                  </Route>
                   <Route path="/SignIn" element={<SignIn />} />
-                  <Route path="/SignUp" element={<SignUp />} />
+
                   {/* ALL ROUTE */}
                   <Route element={<MainLayout />}>
                      <Route path="/" element={<Home />} />
@@ -43,7 +64,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         <Route path="/Activity" element={<Activity />} />
                         <Route path="/Messages" element={<Messages />} />
 
-                        <Route path="/Settings"  element={<SettingsLayout />}>
+                        <Route path="/Settings" element={<SettingsLayout />}>
                            {/* <Route path="/Settings" element={<Settings />} /> */}
                            <Route path="/Settings/AccountSettings" element={<AccountS />} />
                            <Route path="/Settings/Appearance" element={<ThemeS />} />
@@ -55,9 +76,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   </Route>
                   {/* PRIVATE ROUTE 2 */}
                   <Route element={<PrivateRoutesec />}>
-                     <Route path="/ProfileSetup" element={<ProfileSetUp />} />
+                     <Route path="/ProfileSetup" element={<ProfileSetUp />}></Route>
                      <Route path="/EditProfile" element={<EditProfile />} />
-
                   </Route>
                </Routes>
             </AuthContext>

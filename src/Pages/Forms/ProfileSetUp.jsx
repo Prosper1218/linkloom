@@ -7,7 +7,8 @@ import linkloomicon2 from "../../Images/linkloomicon2.png";
 import localforage from "localforage";
 import {UseTheme} from "../../Utils/ThemeContext";
 import {ref, set} from "firebase/database";
-import {db} from "../../firebase";
+import {db, store} from "../../firebase";
+import {doc, setDoc} from "firebase/firestore";
 
 const ProfileSetUp = () => {
    const editref = useRef();
@@ -19,7 +20,7 @@ const ProfileSetUp = () => {
 
    //
 
-   const handlesubmit = (e) => {
+   const handlesubmit = async (e) => {
       e.preventDefault();
       const name = editref.current.name.value;
       const Lastname = editref.current.Lastname.value;
@@ -31,22 +32,12 @@ const ProfileSetUp = () => {
       const number = editref.current.number.value;
       const relationship = editref.current.relationship.value;
 
-      const editDetails = {name, Lastname, bio, occupation, gender, date, location, number, relationship};
+      // const editDetails = {name, Lastname, bio, occupation, gender, date, location, number, relationship};
       // console.log(editDetails);
 
       // console.log(uid);
-      const uid = User.uid;
-
-      set(ref(db, `${uid}`), {
-         editDetails,
-         // uid,
-      })
-         .then(() => {
-            console.log("successful");
-         })
-         .catch((error) => {
-            console.log(error);
-         });
+      const ref = doc(store, "users", `${User.user.uid}`);
+      await setDoc(ref, {fname:name, sname: Lastname});
 
       setTimeout(() => {
          navigate("/");

@@ -15,29 +15,37 @@ import VeiwDp from "./ProfileLayout/VeiwDp";
 import {UseAuth} from "../../../Utils/AuthContext";
 import {useEffect} from "react";
 import {UseTheme} from "../../../Utils/ThemeContext";
-import {onValue, ref} from "firebase/database";
-import {db} from "../../../firebase";
+import {auth, store} from "../../../firebase";
+import {doc, getDoc} from "firebase/firestore";
+import {onAuthStateChanged} from "firebase/auth";
 
 const Profile = () => {
    const {CurrentDp} = useContext(DpContext);
    const [ViewProfilepic, setViewProfilepic] = useState(false);
    const {User} = UseAuth();
    const {theme} = UseTheme();
-   const [DBDATA, setDBDATA] = useState([])
+   const [userData, setUserData] = useState([]);
 
+   let joinedD = new Date().toDateString();
    useEffect(() => {
-      setDBDATA([]);
-      onValue(ref(db,`${User.uid}`), (snapshot) => {
-         const data = snapshot.val();
-         if (data !== null) {
-         console.log(Object.values(data))
+      onAuthStateChanged(auth, (userdata) => {
+         //  console.log(userdata.uid);
+
+         if (userdata) {
+            const docRef = doc(store, "users", `${userdata.uid}`);
+            const docSnap = getDoc(docRef)
+               .then((info) => {
+                  // console.log(info.data());
+                  setUserData(info.data());
+               })
+               .catch((error) => {
+                  console.log(error);
+               });
+         } else {
+            console.log("data not set yet");
          }
       });
-   }, []);
-   // console.log(DBDATA)
-
-   // let joinedD = new Date().toTimeString()
-   let joinedD = new Date().toDateString();
+   }, [User]);
 
    return (
       <div style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8", color: theme === "dark" ? "#F7F7F8" : "#2222"}}>
@@ -70,19 +78,19 @@ const Profile = () => {
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={user} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           gender
+                           {userData ? userData.Gender : ""}
                         </p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={birthdaycake} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           date
+                           {userData ? userData.Date : ""}
                         </p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={location} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           location
+                           {userData ? userData.Location : ""}
                         </p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
@@ -94,25 +102,25 @@ const Profile = () => {
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={relationship} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           relationship status
+                           {userData ? userData.Relationship : ""}
                         </p>
                      </div>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={suitcase} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           occupation
+                           {userData ? userData.Occupation : ""}
                         </p>
                      </div>
                      <div className="flex flex-row py-2 gap-2">
                         <img src={phone} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           number
+                           {userData ? userData.Number : ""}
                         </p>
                      </div>
                      <div className="flex flex-row py-2 gap-2">
                         <img src={phone} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           Joined:{User.registration ? User.registration : joinedD}
+                           Joined:{User.registration}
                         </p>
                      </div>
                   </section>

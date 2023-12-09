@@ -13,7 +13,6 @@ export const ThemeContext = createContext();
 const AuthContext = ({children}) => {
    const [User, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
-   const [EditedDetails, setEditedDetails] = useState(null);
    const navigate = useNavigate();
    //
    //
@@ -40,8 +39,8 @@ const AuthContext = ({children}) => {
       signInWithEmailAndPassword(auth, UserData.Email, UserData.Password)
          .then((userCredentials) => {
             // console.log(userCredentials);
-            setUser(userCredentials);
-            console.log(User, userCredentials);
+            // setUser(userCredentials.user);
+            console.log(userCredentials);
          })
          .catch((error) => {
             console.log(error);
@@ -55,8 +54,9 @@ const AuthContext = ({children}) => {
       setLoading(true);
       createUserWithEmailAndPassword(auth, UserData.Email, UserData.Password)
          .then((userinfo) => {
-            console.log(userinfo);
+            // console.log(userinfo.user);
             setUser(userinfo);
+            alert("account creation was successful, now redirecting u");
          })
          .catch((error) => {
             console.log(error);
