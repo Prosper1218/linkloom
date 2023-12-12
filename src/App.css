@@ -31,7 +31,7 @@ body {
 }
 #default-sidebar a.active-link {
    color: #fbb03b;
-   background-image: linear-gradient(to right,transparent, rgb(250, 178, 61, 0.9), transparent);
+   background-image: linear-gradient(to right, transparent, rgb(250, 178, 61, 0.9), transparent);
    transition: ease-out 0.2s;
 }
 #default-sidebar a:hover {
@@ -45,57 +45,57 @@ body {
    outline: none;
    font-weight: bold;
    /* color: #e5e5e5; */
-   
 }
 /* #tabnav a.active-link{
   color: red;
 } */
 
-.loading-logo{
+.loading-logo {
    animation: loadlogo 1s ease-in-out infinite;
    /* transition: ease-out 3s; */
 }
 @keyframes loadlogo {
-   0%{
-      scale:0.9;
+   0% {
+      scale: 0.9;
    }
-   50%{
-      scale:1;
+   50% {
+      scale: 1;
    }
-   100%{
-      scale:0.9;
+   100% {
+      scale: 0.9;
    }
-}  
-.activeSettings-link{
-   background-color:#480057;
+}
+.activeSettings-link {
+   background-color: #480057;
    color: white;
    border-radius: 9px;
-   transition:ease-out 0.5s;
+   transition: ease-out 0.5s;
 }
 
-#slinks{
+#slinks {
    padding: 0.5rem 0rem 0.5rem 0rem;
-   width:100%;
+   width: 100%;
    padding-left: 1rem;
    display: flex;
    gap: 0.3rem;
    align-items: center;
 }
 /* #slinks:nth-child(1){ */
-   /* display: none; */
-   /* border: 1px solid green; */
+/* display: none; */
+/* border: 1px solid green; */
 /* } */
 
 @media (max-width: 640px) {
    /* … */
-   #slinks{
+   #slinks {
       padding: 0.3 0rem 0.3rem 0rem;
+      align-items: center;
+      justify-content: center;
       /* padding-left: 1rem; */
-    
+      padding-left: 0rem;
    }
    #default-sidebar a.active-link {
-      background-image: linear-gradient(to right,transparent, rgb(250, 178, 61, 0.2), transparent);
+      background-image: linear-gradient(to right, transparent, rgb(250, 178, 61, 0.2), transparent);
       scale: 1.2;
    }
-   
- }
+}
