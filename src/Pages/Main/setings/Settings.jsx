@@ -1,8 +1,7 @@
 import React, {useContext} from "react";
 import {DpContext} from "../../../LayoutFile/MainLayout";
 import {UseTheme} from "../../../Utils/ThemeContext";
-import SNav from "./SettingsLayout/SNav";
-import {Outlet} from "react-router";
+
 
 const Settings = () => {
    const {CurrentDp} = useContext(DpContext);

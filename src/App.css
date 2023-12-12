@@ -81,10 +81,10 @@ body {
    gap: 0.3rem;
    align-items: center;
 }
-#slinks:nth-child(1){
-   display: none;
+/* #slinks:nth-child(1){ */
+   /* display: none; */
    /* border: 1px solid green; */
-}
+/* } */
 
 @media (max-width: 640px) {
    /* … */

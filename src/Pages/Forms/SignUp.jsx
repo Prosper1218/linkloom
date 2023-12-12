@@ -62,7 +62,7 @@ const SignUp = () => {
 
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
-         <div className="min-h-[100vh]" style={{border: "1px solid red"}}>
+         <div className="min-h-[100vh]">
             <div className="justify-between flex absolute">
                <Link to={"/"}>
                   <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
@@ -71,7 +71,7 @@ const SignUp = () => {
                   </div>
                </Link>
             </div>
-            <div className=" w-full py-8  flex flex-row justify-center text-center" style={{border: "1px solid blue"}}>
+            <div className=" w-full py-8  flex flex-row justify-center text-center">
                <div
                   className=" w-full sm:w-[500px] h-[90vh] text-white overflow-y-hidden px-5 sm:px-6"
                   // style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",}}

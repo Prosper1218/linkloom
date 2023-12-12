@@ -31,7 +31,7 @@ const RelationshipStat = () => {
             Location: location,
             Relationship: relationshipstatus,
             Number: number,
-            Bio:BIO,
+            Bio: BIO,
          })
             .then(() => {
                navigate("/");

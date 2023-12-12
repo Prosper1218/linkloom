@@ -10,8 +10,8 @@ import notification from "../../../../Images/notification.png";
 const SNav = () => {
    const {theme} = UseTheme();
    const links = [
-      {id: 6, name: "Settings", to: "/Settings"},
-      {id: 1, name: "account", to: "/Settings/AccountSettings", icon: skills},
+      // {id: 6, name: "Settings", to: "/Settings"},
+      {id: 1, name: "account", to: "/Settings/", icon: skills},
       {id: 2, name: "appearance", to: "/Settings/Appearance", icon: themes},
       {id: 3, name: "Security", to: "/Settings/Password&Security", icon: shield},
       {id: 4, name: "messages", to: "/Settings/Messages", icon: mailing},
@@ -33,7 +33,7 @@ const SNav = () => {
                      {name}
                   </NavLink>
                );
-            })}
+            })}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
          </div>
       </div>
    );

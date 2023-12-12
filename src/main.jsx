@@ -64,13 +64,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                         <Route path="/Activity" element={<Activity />} />
                         <Route path="/Messages" element={<Messages />} />
 
-                        <Route path="/Settings" element={<SettingsLayout />}>
+                        <Route element={<SettingsLayout />}>
                            {/* <Route path="/Settings" element={<Settings />} /> */}
-                           <Route path="/Settings/AccountSettings" element={<AccountS />} />
+                           <Route path="/Settings" element={<AccountS />} />
                            <Route path="/Settings/Appearance" element={<ThemeS />} />
                            <Route path="/Settings/Password&Security" element={<PassSecS />} />
                            <Route path="/Settings/Messages" element={<MessageS />} />
-                           <Route path="/Settings/Notification" element={<Notifications />} />
+                           <Route path="/Settings/Notification" element={<Notifications />} />  
                         </Route>
                      </Route>
                   </Route>

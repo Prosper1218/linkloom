@@ -15,7 +15,7 @@ const MainLayout = () => {
             <div>
                <Nav />
             </div>
-            <div className=" sm:p-4 sm:ml-[10rem] w-full min-h-[100vh]" style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}}>
+            <div className=" sm:p-4 sm:ml-[10rem] w-full min-h-[100vh] px-2" style={{ backgroundColor:theme === 'dark'?"#222222":"#F7F7F8"}}>
                <Outlet />
             </div>
          </div>

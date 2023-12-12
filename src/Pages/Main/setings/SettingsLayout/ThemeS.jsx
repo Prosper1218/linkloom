@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import {UseTheme} from "../../../../Utils/ThemeContext";
-import localforage from "localforage";
 
 const ThemeS = () => {
    const {theme, toggleTheme} = UseTheme();

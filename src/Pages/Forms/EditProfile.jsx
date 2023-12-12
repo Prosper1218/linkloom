@@ -1,22 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router";
 import {useRef, useContext, useState} from "react";
 import {UseAuth} from "../../Utils/AuthContext";
 import logo from "../../Images/linkloomlogosec.png";
 import linkloomicon2 from "../../Images/linkloomicon2.png";
-import localforage from "localforage";
 import {UseTheme} from "../../Utils/ThemeContext";
+import {auth, store} from "../../firebase";
+import {doc, updateDoc} from "firebase/firestore";
+import {onAuthStateChanged} from "firebase/auth";
 
 const EditProfile = () => {
    const editref = useRef();
-   const [Userinfo, setUserinfo] = useState(null);
    const navigate = useNavigate();
    const {theme} = UseTheme();
-
+   const {User} = UseAuth();
+   const [Currentuser, setCurrentuser] = useState(null);
    //
    //
+   useEffect(() => {
+      onAuthStateChanged(auth, (currentu) => {
+         // console.log(currentu.uid);
+         setCurrentuser(currentu.uid);
+      });
+   }, []);
 
-   const handlesubmit = (e) => {
+   const handlesubmit = async (e) => {
       e.preventDefault();
       const name = editref.current.name.value;
       const Lastname = editref.current.Lastname.value;
@@ -28,25 +36,30 @@ const EditProfile = () => {
       const number = editref.current.number.value;
       const relationship = editref.current.relationship.value;
 
-      const editDetails = {name, Lastname, bio, occupation, gender, date, location, number, relationship};
-      setUserinfo(editDetails);
-      // console.log(editDetails);
-      setTimeout(() => {
-         navigate("/");
-      }, 2500);
-   };
+      const ref = doc(store, "users", `${Currentuser}`);
 
-   if (Userinfo) {
-       localforage
-      .setItem("Details", Userinfo)
-      .then(() => {
-         console.log("saved data to localforage");
+      await updateDoc(ref, {
+         Firstname: name,
+         Lastname: Lastname,
+         Gender: gender,
+         Occupation: occupation,
+         Date: date,
+         Location: location,
+         Relationship: relationship,
+         Number: number,
+         Bio: bio,
       })
-      .catch((error) => {
-         console.log("there was an error saving user's data");
-      });
-   }
-  
+         .then(() => {
+            // console.log("the work is done");
+            alert("profileUpdated, Now redirecting you!");
+            setTimeout(() => {
+               navigate("/Profile");
+            }, 1500);
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+   };
 
    const handleDiscard = () => {
       navigate(-1);
