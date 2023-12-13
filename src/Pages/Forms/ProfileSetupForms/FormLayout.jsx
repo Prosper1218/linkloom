@@ -29,15 +29,15 @@ const FormLayout = () => {
       setrelationshipstatus,
       bio,
       setbio,
-      number, 
-      setnumber
+      number,
+      setnumber,
    };
    return (
-      <div className="flex flex-row">
-         <div className="grow min-h-[100vh]">
+      <div className="flex flex-row overflow-y-hidden">
+         <div className="w-full sm:w-[24rem] min-h-[100vh] overflow-y-hidden shrink-0 ">
             <Outlet context={context} />
          </div>
-         <div className=" hidden sm:block w-[16rem]">
+         <div className=" hidden sm:block grow min-h-[100vh] overflow-y-hidden">
             <FormNav />
          </div>
       </div>

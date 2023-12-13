@@ -51,8 +51,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                      <Route path="/setup/RelationshipStatus" element={<RelationshipStat />} />
                      <Route path="/setup/Number" element={<NumberF />} />
                      <Route path="/setup/Bio" element={<Bio />} />
+                     <Route path="/SignIn" element={<SignIn />} />
                   </Route>
-                  <Route path="/SignIn" element={<SignIn />} />
+
 
                   {/* ALL ROUTE */}
                   <Route element={<MainLayout />}>
