@@ -158,6 +158,7 @@ const SignUp = () => {
                      or <br />
                      Sign Up With
                   </p>
+                  <br />
                   <div className="justify-center flex gap-1 ">
                      <div className="border w-5 h-5 rounded-full"></div>
                      <div className="border w-5 h-5 rounded-full"></div>
