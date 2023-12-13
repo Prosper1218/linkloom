@@ -79,7 +79,7 @@ const SignUp = () => {
                >
                   <div className=" justify-left text-left mb-2">
                      <h4
-                        className=" [font-family:'Inter-Bold',Helvetica] font-bold text-[13px] tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-32"
+                        className=" [font-family:'Inter-Bold',Helvetica] font-bold text-[13px] tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-40"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
                      >
                         Free Sign Up
