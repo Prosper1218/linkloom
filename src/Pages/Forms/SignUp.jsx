@@ -64,7 +64,7 @@ const SignUp = () => {
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
          <div className="min-h-[100vh]">
-            <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]"> 
+            <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]">
                <Link to={"/"} className=" justify-center flex w-full sm:w-auto">
                   <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
                      <img src={linkloomicon2} alt={logo} className="w-[2rem] h-[2rem] flex-none" />
@@ -89,24 +89,24 @@ const SignUp = () => {
                      </p>
                   </div>
                   <form action="" className=" relative" onSubmit={handlesubmit} ref={SignUpRef}>
-                        <input
-                           type="text"
-                           name="name"
-                           id="name"
-                           className={` rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] mb-4 `}
-                           style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
-                           placeholder="Name..."
-                           required
-                        />
-                        <input
-                           type="email"
-                           name="email"
-                           id="email"
-                           className=" rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] "
-                           style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
-                           placeholder="Email..."
-                           required
-                        />
+                     <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        className={` rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] mb-4 `}
+                        style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+                        placeholder="Name..."
+                        required
+                     />
+                     <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        className=" rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] "
+                        style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
+                        placeholder="Email..."
+                        required
+                     />
 
                      <input
                         type={"password"}
@@ -154,6 +154,16 @@ const SignUp = () => {
                         </Link>
                      </p>
                   </form>
+                  <p className=" text-center text-[60%] font-thin mt-1 mb-4 pl-2 font-serif " style={{color: theme === "dark" ? "#F7F7F8" : "black"}}>
+                     or <br />
+                     Sign Up With
+                  </p>
+                  <div className="justify-center flex gap-1 ">
+                     <div className="border w-5 h-5 rounded-full"></div>
+                     <div className="border w-5 h-5 rounded-full"></div>
+                     <div className="border w-5 h-5 rounded-full"></div>
+                     <div className="border w-5 h-5 rounded-full"></div>
+                  </div>
                </div>
             </div>
          </div>
