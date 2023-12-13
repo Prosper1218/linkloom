@@ -51,15 +51,15 @@ const SignIn = () => {
    };
 
    return (
-      <div className="min-h-[100vh] w-full" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
-         <div className=" w-full h-screen flex flex-row justify-center text-center ">
+      <div className="min-h-[100vh] h-[100vh] w-full" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
+         <div className=" w-full h-[100vh] flex flex-row justify-center text-center ">
             <div
                className=" w-full sm:w-[500px] h-[100vh] text-white overflow-y-hidden px-5 sm:px-6"
                // style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px"}}
             >
                <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]">
                   <Link to={"/"} className="justify-center flex w-full sm:w-auto">
-                     <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden"> 
+                     <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
                         <img src={linkloomicon2} alt={logo} className="w-[2rem] h-[2rem] flex-none" />
                         <img src={logo} alt="" className="w-20" />
                      </div>
@@ -107,15 +107,15 @@ const SignIn = () => {
                      </span>
                      <p className="text-white text-[55%]"> Login</p>
                   </button>{" "}
-                  <p className=" text-left text-[60%] font-thin mt-1 mb-4 pl-2 font-serif" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
-                     don't have an account?
-                     <Link to={"/SignUp"} className="underline ml-1">
-                        Sign up
-                     </Link>
-                  </p>
                </form>
             </div>
          </div>
+         <p className=" text-center text-[60%] font-thin pl-2 font-serif absolute bottom-0" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+            don't have an account?
+            <Link to={"/SignUp"} className="underline ml-1">
+               Sign up
+            </Link>
+         </p>
       </div>
    );
 };
