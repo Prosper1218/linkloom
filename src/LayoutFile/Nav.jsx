@@ -27,7 +27,7 @@ const Nav = () => {
 
    return (
       <div>
-         <div className="w-[2.4rem] h-[2.4rem] absolute top-[2px] ">
+         <div className="w-[2.4rem] h-[2.4rem] absolute top-[2px] pl-1">
             <img src={linkloomicon2} alt="" />
          </div>
          <aside
