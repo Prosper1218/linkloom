@@ -8,6 +8,8 @@ import ymk2 from "./Images/ymk2.png";
 import ymk3 from "./Images/ymk3.png";
 import Post1 from "./Images/post1.png";
 import Message from "./Images/mes.png";
+import {EyeClosedIcon, EyeOpenIcon, GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon, TwitterLogoIcon} from "@radix-ui/react-icons";
+
 
 export const Links = [
    {
@@ -292,4 +294,11 @@ export const followin = [
       profile: ymk2,
       following: true,
    },
+];
+
+export const alt = [
+   {id: 1, icon: <InstagramLogoIcon />},
+   {id: 2, icon: <GitHubLogoIcon />},
+   {id: 3, icon: <LinkedInLogoIcon />},
+   {id: 4, icon: <TwitterLogoIcon />},
 ];

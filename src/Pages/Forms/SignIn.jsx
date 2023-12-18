@@ -11,6 +11,7 @@ import linkloomicon2 from "../../Images/linkloomicon2.png";
 import {UseTheme} from "../../Utils/ThemeContext";
 import Settings from "../Main/setings/Settings";
 import login from "../../Images/login.png";
+import {alt} from '../../Data'
 
 const SignIn = () => {
    const [ShowPassword, setShowPassword] = useState(true);
@@ -59,7 +60,7 @@ const SignIn = () => {
             >
                <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]">
                   <Link to={"/"} className="justify-center flex w-full sm:w-auto">
-                     <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden"> 
+                     <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
                         <img src={linkloomicon2} alt={logo} className="w-[2rem] h-[2rem] flex-none" />
                         <img src={logo} alt="" className="w-20" />
                      </div>
@@ -67,7 +68,7 @@ const SignIn = () => {
                </div>
                <div className=" justify-left text-left mb-2">
                   <h4
-                     className=" [font-family:'Inter-Bold',Helvetica] font-bold text-[13px] tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-32"
+                     className=" [font-family:'Inter-Bold',Helvetica] font-bold text-[13px] tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-44"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
                   >
                      Sign In
@@ -114,6 +115,20 @@ const SignIn = () => {
                      </Link>
                   </p>
                </form>
+               <p className=" text-center text-[60%] font-thin mt-1 mb-4 pl-2 font-serif " style={{color: theme === "dark" ? "#F7F7F8" : "black"}}>
+                  or <br />
+                  Sign Up With
+               </p>
+               <br />
+               <div className="justify-center flex gap-1 ">
+                  {alt.map((items) => {
+                     return (
+                        <div className="border w-5 h-5 rounded-full overflow-y-hidden" key={items.id}>
+                           {items.id}
+                        </div>
+                     );
+                  })}
+               </div>
             </div>
          </div>
       </div>

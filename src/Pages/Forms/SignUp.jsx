@@ -1,4 +1,3 @@
-import {EyeClosedIcon, EyeOpenIcon} from "@radix-ui/react-icons";
 import React, {useEffect, useRef} from "react";
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
@@ -10,6 +9,7 @@ import logo from "../../Images/linkloomlogosec.png";
 import linkloomicon2 from "../../Images/linkloomicon2.png";
 import {UseTheme} from "../../Utils/ThemeContext";
 import usericon from "../../Images/usericon.png";
+import {alt} from '../../Data'
 
 const SignUp = () => {
    const [seepass, setseepass] = useState(true);
@@ -60,6 +60,7 @@ const SignUp = () => {
          setDisabled(false);
       }
    };
+ 
 
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
@@ -160,10 +161,13 @@ const SignUp = () => {
                   </p>
                   <br />
                   <div className="justify-center flex gap-1 ">
-                     <div className="border w-5 h-5 rounded-full"></div>
-                     <div className="border w-5 h-5 rounded-full"></div>
-                     <div className="border w-5 h-5 rounded-full"></div>
-                     <div className="border w-5 h-5 rounded-full"></div>
+                     {alt.map((items) => {
+                        return (
+                           <div className="border w-5 h-5 rounded-full overflow-y-hidden" key={items.id}>
+                              {items.id}
+                           </div>
+                        );
+                     })}
                   </div>
                </div>
             </div>

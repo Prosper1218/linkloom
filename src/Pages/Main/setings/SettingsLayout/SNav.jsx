@@ -20,8 +20,8 @@ const SNav = () => {
    return (
       <div className="w-full sm:w-48 h-10 item-center sm:min-h-[100vh] flex justify-center ">
          <div
-            className=" h-full sm:h-auto flex flex-row gap-2 justify-center sm:justify-normal sm:flex-col items-center text-[60%] sm:text-xs w-full sm:space-y-2 sm:pt-2 overflow-y-hidden sm:pr-4"
-            style={{color: theme === "dark" ? "white" : "black"}}
+            className=" h-full sm:h-auto flex flex-row gap-2 justify-center sm:justify-normal sm:flex-col items-center text-[60%] sm:text-xs w-full sm:space-y-2 sm:pt-2 overflow-y-hidden sm:pr-4 border"
+            style={{color: theme === "dark" ? "white" : "black", backgroundColor: theme === "dark" ? "" : "#e0e0e0"}}
          >
             {links.map((items) => {
                const {id, name, to, icon} = items;
