@@ -53,7 +53,7 @@ const Nav = () => {
                               to={to}
                            >
                               <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-center">
-                                 {icon ? <LazyLoadImage src={icon} alt={name} className="w-4 sm:w-5 h-4 sm:h-5 object-cover" /> : ""}
+                                 {icon ? <LazyLoadImage src={icon} alt={name} className="w-5 sm:w-5 h-5 sm:h-5 object-cover" /> : ""}
                               </div>
                               <span className="hidden sm:block text-white font-sans"> {name}</span>
                            </NavLink>
