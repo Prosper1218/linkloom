@@ -36,7 +36,7 @@ const TabLayout = () => {
             {Links.map((items) => {
                const {id, name, setto, to, len} = items;
                return (
-                  <NavLink key={id} onClick={() => setActiveTab(setto)} className="overflow-y-hidden flex gap-1">
+                  <NavLink key={id} onClick={() => setActiveTab(setto)} className="overflow-y-hidden flex gap-1 font">
                      {name} <span className="bg-red-600 rounded-full text-white w-4 h-4 items-center text-center justify-center flex text-[60%]">{len}</span>
                   </NavLink>
                );

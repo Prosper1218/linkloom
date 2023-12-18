@@ -51,6 +51,7 @@ const Nav = () => {
                               // className="flex flex-row gap-2 w-full pl-4 text-xs text-white "
                               key={id}
                               to={to}
+                              id="font"
                            >
                               <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-center">
                                  {icon ? <LazyLoadImage src={icon} alt={name} className="w-5 sm:w-5 h-5 sm:h-5 object-cover" /> : ""}

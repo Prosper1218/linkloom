@@ -71,7 +71,7 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
             <img src={CoverP} alt="coverphoto" className="w-full h-full object-cover z-10" onClick={handlecoverphotoclick} />
          </div>
          <button
-            className=" z-20 text-[#A303A0] w-[6rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-white top-[10rem] sm:top-[11rem] right-[1rem] sm:right-[1.9rem] font-semibold  absolute font-sans"
+            className=" z-20 text-[#A303A0] w-[6rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-white top-[10rem] sm:top-[11rem] right-[1rem] sm:right-[1.9rem] font-semibold font  absolute"
             onClick={handlechoosep}
          >
             Edit Cover Photo
@@ -91,13 +91,13 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
                   <p className="font-sans font-bold text-lg" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                      {UserData.Firstname} {UserData.Lastname}
                   </p>
-                  <p className=" font-sans text-[65%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                  <p className=" font-sans text-[65%] overflow-y-hidden font" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                      {UserData.Bio}
                   </p>
                </div>
                <div>
                   <button
-                     className="text-[#A303A0] border-[1px] border-[#A303A0] border-solid w-[5rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-transparent font-semiboldfont-sans"
+                     className="text-[#A303A0] border-[1px] border-[#A303A0] border-solid w-[5rem] h-[1.7rem] sm:w-[7rem] sm:h-[2rem] text-[60%] rounded-md bg-transparent font-semibold font"
                      onClick={() => navigate("/EditProfile")}
                   >
                      Edit profile

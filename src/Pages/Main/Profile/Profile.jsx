@@ -72,9 +72,9 @@ const Profile = () => {
                   className="pt-4 rounded-[8px]"
                   style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px"}}
                >
-                  <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3">About</h3>
+                  <h3 className="text-[#A303A0]  text-sm font-bold pl-2 sm:pl-4 mb-3 font ">About</h3>
 
-                  <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                  <section className="flex flex-col space-y-2 mx-2 sm:mx-4 pb-4 font" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                      <div className="flex flex-row gap-2 border-gray border-solid border-b py-2">
                         <img src={user} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
@@ -120,7 +120,7 @@ const Profile = () => {
                      <div className="flex flex-row py-2 gap-2">
                         <img src={phone} alt="dp" className="w-4 h-4" />{" "}
                         <p className="text-[65%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                           Joined:{User.registration}
+                           Joined:{User.registration ? User.registration : joinedD}
                         </p>
                      </div>
                   </section>
@@ -130,7 +130,7 @@ const Profile = () => {
                      className=" bg-white rounded-[8px] overflow-auto h-[10.5rem] pt-4 pb-6"
                      style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px"}}
                   >
-                     <h3 className="text-[#A303A0]  text-xs font-bold  mb-3 border-gray border-solid border-b-[0.5px] mx-2 sm:mx-4 pb-2">You might know</h3>
+                     <h3 className="text-[#A303A0]  text-xs font-bold  mb-3 border-gray border-solid border-b-[0.5px] mx-2 sm:mx-4 pb-2 font">You might know</h3>
                      <section className="mt-3 space-y-2 ml-2 sm:ml-4">
                         {ymk.map((pymk) => {
                            const {id, name, email, profile} = pymk;
@@ -144,7 +144,7 @@ const Profile = () => {
                                        {" "}
                                        {name}{" "}
                                     </p>
-                                    <p className="text-[58%] overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                                    <p className="text-[58%] overflow-y-hidden font" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                                        {" "}
                                        {email}
                                     </p>
@@ -158,7 +158,7 @@ const Profile = () => {
                      className="pt-4 rounded-[8px] overflow-auto h-[10.5rem] items-center pb-6"
                      style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px"}}
                   >
-                     <h3 className="text-[#A303A0]  text-xs font-bold mb-3 border-b-[0.5px] mx-2 sm:mx-4  border-gray border-solid pb-2">Active</h3>
+                     <h3 className="text-[#A303A0]  text-xs font-bold mb-3 border-b-[0.5px] mx-2 sm:mx-4  border-gray border-solid pb-2 font">Active</h3>
                      <div className=" mt-4 space-y-2 mx-2 sm:mx-4">
                         {online.map((active) => {
                            const {id, name, status, when, profile} = active;
@@ -173,7 +173,7 @@ const Profile = () => {
                                           {" "}
                                           {name}{" "}
                                        </p>
-                                       <p className="text-[58%]  overflow-y-hidden" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                                       <p className="text-[58%]  overflow-y-hidden font" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                                           {" "}
                                           {status || `last seen ${when}`}
                                        </p>

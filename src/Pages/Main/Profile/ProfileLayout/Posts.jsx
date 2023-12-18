@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {UserPosts} from "../../../../Data";
 import {DpContext} from "../../../../LayoutFile/MainLayout";
 import {HamburgerMenuIcon} from "@radix-ui/react-icons";
@@ -8,12 +8,34 @@ import commenticon from "../../../../Images/commenticon.png";
 import {UseAuth} from "../../../../Utils/AuthContext";
 import localforage from "localforage";
 import {UseTheme} from "../../../../Utils/ThemeContext";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, store } from "../../../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 const Posts = () => {
    const {CurrentDp} = useContext(DpContext);
    const {User} = UseAuth();
    const [SavedData, setSavedData] = useState([]);
    const {theme} = UseTheme();
- 
+
+   useEffect(() => {
+      onAuthStateChanged(auth, (userdata) => {
+         //  console.log(userdata.uid);
+
+         if (userdata) {
+            const docRef = doc(store, "users", `${userdata.uid}`);
+            const docSnap = getDoc(docRef)
+               .then((info) => {
+                  // console.log(info.data());
+                  setSavedData(info.data());
+               })
+               .catch((error) => {
+                  console.log(error);
+               });
+         } else {
+            console.log("data not set yet");
+         }
+      });
+   }, [User]);
 
    return (
       <div className="space-y-2 mx-2 sm:mx-4">
@@ -28,9 +50,11 @@ const Posts = () => {
                      <div className="flex justify-between grow items-center">
                         <div className="leading-4">
                            <p className="text-xs font-bold" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
-                              username
+                              {SavedData.Firstname ? SavedData.Firstname : ""} {SavedData.Lastname ? SavedData.Lastname : ""}
                            </p>
-                           <p className="text-[50%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{time}</p>
+                           <p className="text-[50%]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                              {time}
+                           </p>
                         </div>
                         <div>
                            <img src={threedots} alt="" className="w-4" />
@@ -41,17 +65,25 @@ const Posts = () => {
                      <img src={postimage} alt="postimg" className="w-full h-full object-cover" />
                   </div>
                   <div className="flex gap-1 items-center justify-start mb-2">
-                     <p className="text-xs font-bold " style={{color: theme === "dark" ? "white" : "#A303A0"}}>username</p>
-                     <p className="text-[55%]  pt-[0.21rem]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>{caption}</p>
+                     <p className="text-xs font-bold font " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                     {SavedData.Firstname ? SavedData.Firstname : ""}
+                     </p>
+                     <p className="text-[55%]  pt-[0.21rem]" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                        {caption}
+                     </p>
                   </div>
                   <div className="flex justify-start items-center gap-2">
                      <div className="flex justify-start gap-1 items-center">
                         <img src={Loveicon} alt="loveicon" className=" w-4 h-4" />
-                        <p className="text-[50%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{likes}</p>
+                        <p className="text-[50%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                           {likes}
+                        </p>
                      </div>
                      <div className="flex justify-start gap-1 items-center">
                         <img src={commenticon} alt="commenticon" className=" w-4 h-4" />
-                        <p className="text-[50%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>{Comments}</p>
+                        <p className="text-[50%] " style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                           {Comments}
+                        </p>
                      </div>
                   </div>
                </div>
