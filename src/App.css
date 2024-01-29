@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Anton");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -81,7 +83,7 @@ body {
    display: flex;
    gap: 0.3rem;
    align-items: center;
-   font-family: "Josefin Sans", cursive !important;
+   font-family: "Josefin Sans", sans-serif !important;
 }
 /* #slinks:nth-child(1){ */
 /* display: none; */
@@ -105,8 +107,8 @@ body {
 }
 
 .font {
-   font-family: "Josefin Sans", cursive !important;
+   font-family: "Josefin Sans", sans-serif !important;
 }
 #font {
-   font-family: "Josefin Sans", cursive !important;
+   font-family: "Josefin Sans", sans-serif !important;
 }
