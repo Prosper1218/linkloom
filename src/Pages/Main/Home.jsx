@@ -16,6 +16,13 @@ const Home = () => {
                <img src={CurrentDp} alt="" className="w-full h-full object-cover rounded-full" />
             </div>
          </div>
+
+
+
+
+
+
+         <p className="text-5xl text-white">please navigate to the profile page !!</p>
       </div>
    );
 };
