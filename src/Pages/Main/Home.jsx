@@ -17,7 +17,7 @@ const Home = () => {
             </div>
          </div>
 
-         <p className="text-5xl text-white">please navigate to the profile page !!</p>
+         <p className="text-3xl text-white">please navigate to the profile page !!</p>
       </div>
    );
 };
