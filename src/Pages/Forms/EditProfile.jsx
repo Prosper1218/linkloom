@@ -74,21 +74,21 @@ const EditProfile = () => {
             <img src={logo} alt="" className="w-32" />
          </div>
 
-         <div className=" w-full  flex flex-row justify-center text-center px-4 ">
+         <div className=" w-full  flex flex-row justify-center text-center px-3 ">
             <div className=" w-full sm:w-[600px] h-[80vh] text-white box ">
                <h4
-                  className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10 text-left pl-4"
+                  className="montserrat font-semibold text-[26px] tracking-[0] leading-[normal] whitespace-nowrap pb-6 mt-10 text-left pl-2"
                   style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
                >
                   Edit Profile
                </h4>
-               <form action="" className=" relative" onSubmit={handlesubmit} ref={editref}>
+               <form action="" className=" relative sora" onSubmit={handlesubmit} ref={editref}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-4">
                      <input
                         type="text"
                         name="name"
                         id="name"
-                        className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                        className="w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Firstname..."
                         required
@@ -97,7 +97,7 @@ const EditProfile = () => {
                         type="text"
                         name="Lastname"
                         id="Lastname"
-                        className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                        className="w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Lastname..."
                         required
@@ -109,7 +109,7 @@ const EditProfile = () => {
                      id="bio"
                      cols="20"
                      rows="15"
-                     className="w-full h-12 focus:outline-none bg-transparent pl-4 text-xs mb-3 p-2"
+                     className="w-full h-[2.5rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3 p-2"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Bio..."
                      required
@@ -118,7 +118,7 @@ const EditProfile = () => {
                      type="text"
                      name="occupation"
                      id="occupation"
-                     className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                     className="w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Occupation..."
                      required
@@ -129,7 +129,7 @@ const EditProfile = () => {
                         name="gender"
                         required
                         id="gender"
-                        className=" h-8 mb-3 text-xs pl-3 focus:outline-none outline-none"
+                        className=" h-[2.8rem] rounded-[4px] mb-3 text-xs pl-3 focus:outline-none outline-none"
                         style={{
                            color: theme === "dark" ? "#F7F7F8" : "#222222",
                            border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 ",
@@ -143,7 +143,7 @@ const EditProfile = () => {
                         type="date"
                         name="date"
                         id="date"
-                        className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3 utline-none pr-4"
+                        className="w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3 utline-none pr-4"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="date..."
                         required
@@ -153,7 +153,7 @@ const EditProfile = () => {
                      type="text"
                      name="location"
                      id="location"
-                     className="w-full h-8 focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                     className="w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Location..."
                      required
@@ -163,7 +163,7 @@ const EditProfile = () => {
                         name="relationship"
                         required
                         id="relationship"
-                        className=" h-8 mb-5 text-xs pl-3 outline-none focus:outline-none "
+                        className=" h-[2.8rem] rounded-[4px] mb-5 text-xs pl-3 outline-none focus:outline-none "
                         style={{
                            color: theme === "dark" ? "#F7F7F8" : "#222222",
                            border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 ",
@@ -178,19 +178,19 @@ const EditProfile = () => {
                         type="number"
                         name="number"
                         id="number"
-                        className="w-full h-8 border-[0.5px] text-black border-black border-solid focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                        className="w-full h-[2.8rem] rounded-[4px] border-[0.5px] text-black border-black border-solid focus:outline-none bg-transparent pl-4 text-xs mb-3"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Number..."
                         required
                      />
                   </div>
                   <div className="flex justify-left gap-3 font-sans">
-                     <button type="submit" className="w-[8rem] h-8 border-none text-[55%] items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] text-white">
+                     <button type="submit" className="w-[8rem] h-[2.8rem] rounded-[4px]  border-none text-xs sora items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] text-white">
                         Update Profile
                      </button>
                      <button
                         type="button"
-                        className="w-[8rem] h-8 text-[55%] items-center [font-family:'Inter-Bold',Helvetica] border-[#490057] border-[1px] border-solid"
+                        className="w-[8rem] h-[2.8rem] rounded-[4px] text-xs items-center sora border-[#490057] border-[1px] border-solid"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#490057"}}
                         onClick={handleDiscard}
                      >

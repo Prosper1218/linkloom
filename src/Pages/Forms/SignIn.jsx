@@ -27,7 +27,9 @@ const SignIn = () => {
    };
    useEffect(() => {
       if (User) {
-         navigate("/");
+         setTimeout(() => {
+         navigate("/Profile");
+         }, 6000);
       }
       // console.log(User);
    }, [User]);
