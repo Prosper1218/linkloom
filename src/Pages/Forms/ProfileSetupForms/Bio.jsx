@@ -43,7 +43,7 @@ const RelationshipStat = () => {
                console.log(error);
             });
       } else {
-         alert("please fill in a bio");
+         alert("please fill the form");
       }
    };
 
@@ -51,7 +51,7 @@ const RelationshipStat = () => {
 
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
-         <AlertforSetup Act={"Profile setup successful!"} er={false} handlecontinue={handlecontinue} />
+         {Alerttrue ? <AlertforSetup Act={"Profile setup successful!"} er={false} handlecontinue={handlecontinue} /> : null}
          <div className="justify-between flex absolute">
             <Link to={"/"}>
                <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden pl-4 pt-4">
