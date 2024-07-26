@@ -37,15 +37,12 @@ const ProfileSetUp = () => {
 
       // console.log(uid);
       const ref = doc(store, "users", `${User.user.uid}`);
-      await setDoc(ref, {fname:name, sname: Lastname});
+      await setDoc(ref, {fname: name, sname: Lastname});
 
       setTimeout(() => {
          navigate("/");
       }, 2500);
    };
-   // useEffect(() => {
-   //  console.log(User.uid)
-   // }, [])
 
    //
    //

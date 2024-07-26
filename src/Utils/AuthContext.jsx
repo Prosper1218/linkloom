@@ -14,6 +14,7 @@ const AuthContext = ({children}) => {
    const [User, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
    const navigate = useNavigate();
+   const [ModalActive, setModalActive] = useState(false);
    //
    //
    // USEEFFECT
@@ -88,6 +89,8 @@ const AuthContext = ({children}) => {
       SignInUser,
       SignUpUser,
       Logout,
+      ModalActive,
+      setModalActive,
    };
 
    // RETURN

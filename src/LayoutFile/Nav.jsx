@@ -7,7 +7,8 @@ import linkloomicon2 from "../Images/linkloomicon2.png";
 import {Links} from "../Data";
 import {DpContext} from "./MainLayout";
 import {UseAuth} from "../Utils/AuthContext";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import "/index.css";
 
 const Nav = () => {
    const [NavActive, setNavActive] = useState(false);
@@ -41,7 +42,7 @@ const Nav = () => {
                      <img src={logo} alt={logo} className="w-[1.5rem] h-[1.5rem] flex-none" />
                      <img src={linkloomlogo} alt="" className="w-16" />
                   </div>
-                  <div className=" overflow-y-hidden text-center justify-normal sm:gap-0 absolute sm:static bottom-0 sm:bottom-auto w-full sm:w-auto flex flex-row sm:flex-col sm:mt-40 items-center sm:space-y-5 h-12 sm:h-auto gap-0 border-t-[1px] border-white border-solid sm:border-none">
+                  <div className=" overflow-y-hidden text-center justify-normal sm:gap-0 absolute sm:static bottom-0 sm:bottom-auto w-full sm:w-auto flex flex-row sm:flex-col sm:mt-40 items-center sm:space-y-5 h-12 sm:h-auto gap-0 border-t-[1px] border-white border-solid sm:border-none sora">
                      {Links.map((items) => {
                         const {id, name, icon, to} = items;
                         return (
@@ -51,12 +52,11 @@ const Nav = () => {
                               // className="flex flex-row gap-2 w-full pl-4 text-xs text-white "
                               key={id}
                               to={to}
-                              id="font"
                            >
-                              <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-center">
+                              <div className="w-full sm:w-auto  h-full sm:h-auto flex justify-center items-cente sora">
                                  {icon ? <LazyLoadImage src={icon} alt={name} className="w-5 sm:w-5 h-5 sm:h-5 object-cover" /> : ""}
                               </div>
-                              <span className="hidden sm:block text-white font-sans"> {name}</span>
+                              <span className="hidden sm:block text-white sora"> {name}</span>
                            </NavLink>
                         );
                      })}

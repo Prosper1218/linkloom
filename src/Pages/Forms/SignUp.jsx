@@ -9,7 +9,8 @@ import logo from "../../Images/linkloomlogosec.png";
 import linkloomicon2 from "../../Images/linkloomicon2.png";
 import {UseTheme} from "../../Utils/ThemeContext";
 import usericon from "../../Images/usericon.png";
-import {alt} from '../../Data'
+import {alt} from "../../Data";
+import "/index.css";
 
 const SignUp = () => {
    const [seepass, setseepass] = useState(true);
@@ -60,7 +61,6 @@ const SignUp = () => {
          setDisabled(false);
       }
    };
- 
 
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
@@ -74,18 +74,12 @@ const SignUp = () => {
                </Link>
             </div>
             <div className=" w-full  flex flex-row justify-center text-center">
-               <div
-                  className=" w-full sm:w-[500px] h-[100vh] text-white overflow-y-hidden px-5 sm:px-6"
-                  // style={{backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "white", boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 6px",}}
-               >
+               <div className=" w-full sm:w-[500px] h-[100vh] text-white overflow-y-hidden px-3 sm:px-4">
                   <div className=" justify-left text-left mb-2">
-                     <h4
-                        className=" [font-family:'Inter-Bold',Helvetica] font-bold text-[13px] tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-40"
-                        style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
-                     >
-                        Free Sign Up
+                     <h4 className="sora font-bold text-xl tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-40" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+                        Sign up
                      </h4>
-                     <p className="leading-4 overflow-y-hidden text-[64%] font-serif pb-2" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+                     <p className="leading-4 overflow-y-hidden text-sm sora pb-2" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
                         Don't have an account ? create your account, It takes less <br /> than 5 minutes
                      </p>
                   </div>
@@ -94,7 +88,7 @@ const SignUp = () => {
                         type="text"
                         name="name"
                         id="name"
-                        className={` rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] mb-4 `}
+                        className={` rounded-[3px] w-full h-[2.8rem] focus:outline-none bg-transparent pl-4 text-[65%] mb-4 `}
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Name..."
                         required
@@ -103,7 +97,7 @@ const SignUp = () => {
                         type="email"
                         name="email"
                         id="email"
-                        className=" rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] "
+                        className=" rounded-[3px] w-full h-[2.8rem] focus:outline-none bg-transparent pl-4 text-[65%] "
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Email..."
                         required
@@ -113,7 +107,7 @@ const SignUp = () => {
                         type={"password"}
                         name="password"
                         id="password"
-                        className="mt-4 rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] relative"
+                        className="mt-4 rounded-[3px] w-full h-[2.8rem] focus:outline-none bg-transparent pl-4 text-[65%] relative"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                         placeholder="Password..."
                         ref={Password1ref}
@@ -126,13 +120,13 @@ const SignUp = () => {
                         type={seepass ? "password" : "text"}
                         name=" confirm Password"
                         id="confirm Password"
-                        className=" rounded-[3px] w-full h-7 focus:outline-none bg-transparent pl-4 text-[65%] relative"
+                        className=" rounded-[3px] w-full h-[2.8rem] focus:outline-none bg-transparent pl-4 text-[65%] relative"
                         style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222"}}
                         placeholder="Confirm Password..."
                         ref={Password2ref}
                         onChange={handlepassword2change}
                      />
-                     <button type="button" className="hidden sm:block absolute top-[8.8rem] right-3 bg-white rounded-sm px-[1px]" onClick={togglepassword2}>
+                     <button type="button" className="hidden sm:block absolute top-[12.5rem] right-3 bg-white rounded-sm px-[1px]" onClick={togglepassword2}>
                         <img src={seepass ? Hidei : Seei} alt="hide/see icon" className="w-[0.9rem]" />
                      </button>
                      <div className=" text-left text-xs font-thin h-5 pl-2 ">{ThemPassMatch ? "" : <p className="text-red-600 text-[78%]">Passwords don't match!</p>}</div>
@@ -141,34 +135,20 @@ const SignUp = () => {
                         disabled={Disabled}
                         type="submit"
                         style={{opacity: Disabled ? 0.7 : null}}
-                        className="w-full h-8 border-none rounded-[3px]  items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] flex justify-center gap-[1px]"
+                        className="w-full h-[2.8rem] border-none rounded-[3px]  items-center [font-family:'Inter-Bold',Helvetica] bg-[#490057] flex justify-center gap-[1px]"
                      >
                         <span>
                            <img src={usericon} alt="signup icon" className="w-3 h-3" />
                         </span>
                         <p className="text-[50%]  text-white mt-[2px] "> Sign Up</p>
                      </button>
-                     <p className=" text-left text-[60%] font-thin mt-1 mb-4 pl-2 font-serif " style={{color: theme === "dark" ? "#F7F7F8" : "black"}}>
+                     <p className=" text-left text-[80%] font-thin mt-4 mb-4 pl-2 sora " style={{color: theme === "dark" ? "#F7F7F8" : "black"}}>
                         have an account?
                         <Link to={"/SignIn"} className="underline ml-1">
                            Sign In
                         </Link>
                      </p>
                   </form>
-                  <p className=" text-center text-[60%] font-thin mt-1 mb-4 pl-2 font-serif " style={{color: theme === "dark" ? "#F7F7F8" : "black"}}>
-                     or <br />
-                     Sign Up With
-                  </p>
-                  <br />
-                  <div className="justify-center flex gap-1 ">
-                     {alt.map((items) => {
-                        return (
-                           <div className="border w-5 h-5 rounded-full overflow-y-hidden" key={items.id}>
-                              {items.id}
-                           </div>
-                        );
-                     })}
-                  </div>
                </div>
             </div>
          </div>

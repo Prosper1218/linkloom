@@ -54,7 +54,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                      <Route path="/SignIn" element={<SignIn />} />
                   </Route>
 
-
                   {/* ALL ROUTE */}
                   <Route element={<MainLayout />}>
                      <Route path="/" element={<Home />} />
@@ -71,7 +70,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                            <Route path="/Settings/Appearance" element={<ThemeS />} />
                            <Route path="/Settings/Password&Security" element={<PassSecS />} />
                            <Route path="/Settings/Messages" element={<MessageS />} />
-                           <Route path="/Settings/Notification" element={<Notifications />} />  
+                           <Route path="/Settings/Notification" element={<Notifications />} />
                         </Route>
                      </Route>
                   </Route>

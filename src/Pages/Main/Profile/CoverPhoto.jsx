@@ -9,6 +9,7 @@ import {auth, store} from "../../../firebase";
 import {onAuthStateChanged} from "firebase/auth";
 import {UseAuth} from "../../../Utils/AuthContext";
 import {doc, getDoc} from "firebase/firestore";
+import '/index.css'
 
 const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
    const [CoverP, setCoverP] = useState(cover);
@@ -88,7 +89,7 @@ const CoverPhoto = ({handlecoverphotoclick, handleprofilepicclick}) => {
 
             <div className="relative flex flex-row justify-between  px-[1rem] sm:px-[1.9rem]">
                <div className="ml:0 sm:ml-3 pr-6 leading-3 pt-2">
-                  <p className="font-sans font-bold text-lg" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
+                  <p className="font-sans font-bold text-lg sora" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
                      {UserData.Firstname} {UserData.Lastname}
                   </p>
                   <p className=" font-sans text-[65%] overflow-y-hidden font" style={{color: theme === "dark" ? "white" : "#A303A0"}}>
