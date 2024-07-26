@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {UseTheme} from "../../../Utils/ThemeContext";
 import linkloomicon2 from "../../../Images/linkloomicon2.png";
 import logo from "../../../Images/linkloomlogosec.png";
@@ -7,10 +7,13 @@ import {useRef} from "react";
 import {store} from "../../../firebase";
 import {doc, setDoc} from "firebase/firestore";
 import {UseAuth} from "../../../Utils/AuthContext";
+import Alert from "../../../LayoutFile/Alert";
+import AlertforSetup from "../../../LayoutFile/AlertforSetup";
 
 const RelationshipStat = () => {
    const {theme} = UseTheme();
    const navigate = useNavigate();
+   const [Alerttrue, setAlerttrue] = useState(false);
    const bioref = useRef();
    const {firstname, lastname, gender, occupation, date, location, relationshipstatus, bio, setbio, number} = useOutletContext();
    const {User} = UseAuth();
@@ -34,8 +37,7 @@ const RelationshipStat = () => {
             Bio: BIO,
          })
             .then(() => {
-               navigate("/");
-               alert("profile setup was successful");
+               setAlerttrue(true);
             })
             .catch((error) => {
                console.log(error);
@@ -45,8 +47,11 @@ const RelationshipStat = () => {
       }
    };
 
+   const handlecontinue = () => [navigate("/")];
+
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
+         <AlertforSetup Act={"Profile setup successful!"} er={false} handlecontinue={handlecontinue} />
          <div className="justify-between flex absolute">
             <Link to={"/"}>
                <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden pl-4 pt-4">
@@ -56,28 +61,28 @@ const RelationshipStat = () => {
             </Link>
          </div>
          <h4
-            className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[17px] capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
-            style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
+            className="motserrat font-semibold text-3xl capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
+            style={{color: theme === "dark" ? "#F7F7F8" : "#480057"}}
          >
-            let's setup your profile together!
-            <p className="pt-2 text-xs" style={{color: theme === "dark" ? "#F7F7F8" : "#480057"}}>
-               Bio
+            Generating your profile
+            <p className="text-xs pt-2 sora" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+               Short bio about yourself
             </p>
          </h4>
-         <div className="flex justify-center px-5">
+         <div className="flex justify-center px-3">
             <div className=" w-[500px]">
-               <form className="grid gap-0 sm:gap-3 grid-cols-1" ref={bioref}>
+               <form className="grid gap-0 sm:gap-3 grid-cols-1 sora" ref={bioref}>
                   <input
                      type="Bio"
                      name="Bio"
                      id="Bio"
-                     className={`w-full h-9 focus:outline-none bg-transparent pl-4 text-xs mb-3`}
+                     className={`w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3`}
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Write a short bio about your self..."
                      required
                   />
                </form>
-               <button className="float-right h-8 w-24 bg-[#480057] capitalize text-xs font-serif text-white" onClick={handlesubmit}>
+               <button className="float-right h-[2.8rem] rounded-[4px] montserrat w-24 bg-[#480057] capitalize text-xs font-serif text-white" onClick={handlesubmit}>
                   Submit
                </button>
             </div>

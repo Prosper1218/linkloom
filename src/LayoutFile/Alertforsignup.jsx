@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import {UseAuth} from "../Utils/AuthContext";
 
 const Alert = ({Act, whereto, linkto, extrastyling, er}) => {
-   const {signinModalActive, setsigninModalActive} = UseAuth();
+   const {signupModalActive, setsignupModalActive} = UseAuth();
 
    const handletoggle = () => {
-      if (signinModalActive) {
-         setsigninModalActive(false);
+      if (signupModalActive) {
+         setsignupModalActive(false);
       }
    };
 

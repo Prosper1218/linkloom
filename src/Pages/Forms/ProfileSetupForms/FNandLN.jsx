@@ -3,6 +3,7 @@ import {UseTheme} from "../../../Utils/ThemeContext";
 import linkloomicon2 from "../../../Images/linkloomicon2.png";
 import logo from "../../../Images/linkloomlogosec.png";
 import {Link, useNavigate, useOutletContext} from "react-router-dom";
+import '/index.css'
 
 const FNandLN = () => {
    const {theme} = UseTheme();
@@ -37,22 +38,22 @@ const FNandLN = () => {
             </Link>
          </div>
          <h4
-            className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[17px] capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
+            className="motserrat font-semibold text-3xl capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
             style={{color: theme === "dark" ? "#F7F7F8" : "#480057"}}
          >
-            let's setup your profile together!
-            <p className="text-xs pt-2" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+            Generating your profile
+            <p className="text-xs pt-2 sora" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
                tell us your names
             </p>
          </h4>
-         <div className="flex justify-center px-5">
+         <div className="flex justify-center px-3">
             <div className=" w-[500px]">
-               <form className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-2" ref={namesref}>
+               <form className="grid gap-0 sm:gap-3 grid-cols-1 sm:grid-cols-2 sora" ref={namesref}>
                   <input
                      type="text"
                      name="Firstname"
                      id="Firstname"
-                     className={`w-full h-9 focus:outline-none bg-transparent pl-4 text-xs mb-3`}
+                     className={`w-full h-[2.8rem] focus:outline-none rounded-[4px] bg-transparent pl-4 text-xs mb-3`}
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="FirstName..."
                      required
@@ -61,14 +62,14 @@ const FNandLN = () => {
                      type="text"
                      name="LastName"
                      id="LastName"
-                     className="w-full h-9 focus:outline-none bg-transparent pl-4 text-xs mb-3"
+                     className="w-full h-[2.8rem] focus:outline-none rounded-[4px] bg-transparent pl-4 text-xs mb-3"
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="LastName..."
                      required
                   />
                </form>
-               <button type="submit" className="float-right h-8 w-24 bg-[#480057] capitalize text-white text-xs font-serif" onClick={handlesubmit}>
-                  next
+               <button type="submit" className="float-right h-[2.8rem] sora rounded-[4px] w-24 bg-[#480057] capitalize text-white text-xs font-serif" onClick={handlesubmit}>
+                  Next
                </button>
             </div>
          </div>

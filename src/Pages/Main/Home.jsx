@@ -1,12 +1,17 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {DpContext} from "../../LayoutFile/MainLayout";
 import {UseTheme} from "../../Utils/ThemeContext";
+import {UseAuth} from "../../Utils/AuthContext";
 useContext;
 
 const Home = () => {
    const {CurrentDp} = useContext(DpContext);
    const {theme} = UseTheme();
+   const {User} = UseAuth();
    //    {Math.random().toString().slice(3,7)}
+   useEffect(() => {
+      
+   }, [User]);
 
    return (
       <div className="min-h-[90vh]" style={{backgroundColor: theme ? "#2222" : "#F7F7F8", color: theme === "dark" ? "#F7F7F8" : "#2222"}}>

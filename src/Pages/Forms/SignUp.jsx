@@ -11,6 +11,7 @@ import {UseTheme} from "../../Utils/ThemeContext";
 import usericon from "../../Images/usericon.png";
 import {alt} from "../../Data";
 import "/index.css";
+import Alertforsignup from "../../LayoutFile/Alertforsignup";
 
 const SignUp = () => {
    const [seepass, setseepass] = useState(true);
@@ -21,16 +22,16 @@ const SignUp = () => {
    const [Password1length, setPassword1length] = useState(true);
    const [ThemPassMatch, setThemPassMatch] = useState(true);
    const SignUpRef = useRef();
-   const {SignUpUser, User} = UseAuth();
+   const {SignUpUser, User, signupModalActive, signuperrorModalActive, setsignuperrorModalActive} = UseAuth();
    const {theme} = UseTheme();
 
-   useEffect(() => {
-      if (User) {
-         setTimeout(() => {
-            navigate("/setup/Names");
-         }, 2000);
-      }
-   }, [User]);
+   // useEffect(() => {
+   //    if (User) {
+   //       setTimeout(() => {
+   //          navigate("/setup/Names");
+   //       }, 2000);
+   //    }
+   // }, [User]);
 
    const togglepassword2 = () => {
       setseepass(!seepass);
@@ -64,6 +65,10 @@ const SignUp = () => {
 
    return (
       <div className="min-h-[100vh]" style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
+         {signupModalActive ? (
+            <Alertforsignup er={true} extrastyling={"h-[110vh] sm:h-auto"} Act={"Successfully Signed Up"} linkto={"/setup/Names"} whereto={"Continue setting up your profile"} />
+         ) : null}
+         {signuperrorModalActive ? <Alertforsignup er={false} extrastyling={"h-[110vh] sm:h-auto"} Act={"Couldn't Sign Up email might already be in use"} /> : null}
          <div className="min-h-[100vh]">
             <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]">
                <Link to={"/"} className=" justify-center flex w-full sm:w-auto">
@@ -74,7 +79,7 @@ const SignUp = () => {
                </Link>
             </div>
             <div className=" w-full  flex flex-row justify-center text-center">
-               <div className=" w-full sm:w-[500px] h-[100vh] text-white overflow-y-hidden px-3 sm:px-4">
+               <div className=" w-full sm:w-[450px] h-[100vh] text-white overflow-y-hidden px-3 sm:px-4">
                   <div className=" justify-left text-left mb-2">
                      <h4 className="sora font-bold text-xl tracking-[0] leading-[normal] whitespace-nowrap pb-2 mt-40" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
                         Sign up

@@ -20,7 +20,7 @@ const SignIn = () => {
    const passwordref = useRef();
    const [PasswordLength, setPasswordLength] = useState(true);
    const SignInFormref = useRef();
-   const {SignInUser, User} = UseAuth();
+   const {SignInUser, User, signinModalActive, signinerrorModal} = UseAuth();
    const {theme} = UseTheme();
    const togglepassword = () => {
       setShowPassword(!ShowPassword);
@@ -51,11 +51,14 @@ const SignIn = () => {
          setPasswordLength(true);
       }
    };
+   // console.log(signinModalActive);
 
    return (
       <div className={`min-h-[100vh] w-full`} style={{backgroundColor: theme === "dark" ? "#222222" : "#F7F7F8"}}>
+         {signinModalActive ? <Alert er={true} extrastyling={"h-[110vh] sm:h-auto"} Act={"Successfully Signed In"} linkto={"/Profile"} whereto={"Navigate to profile"} /> : null}
+         {signinerrorModal ? <Alert er={false} extrastyling={"h-[110vh] text-md sm:h-auto"} Act={"Couldn't sign in check credentials and try again"} /> : null}
          <div className=" w-full h-screen flex flex-row justify-center text-center ">
-            <div className=" w-full sm:w-[500px] h-[100vh] text-white overflow-y-hidden px-3 sm:px-4">
+            <div className=" w-full sm:w-[400px] h-[100vh] text-white overflow-y-hidden px-3 sm:px-4">
                <div className="left-0 right-0 flex absolute sm:left-4 sm:top-4 top-[4rem]">
                   <Link to={"/"} className="justify-center flex w-full sm:w-auto">
                      <div className=" flex row justify-start gap-1 items-center h-auto overflow-y-hidden">
@@ -85,7 +88,9 @@ const SignIn = () => {
                      type={ShowPassword ? "password" : "text"}
                      name="Password"
                      id="Password"
-                     className={`w-full h-[2.8rem] relative border-[0.5px] border-${theme ? "#F7F7F8" : "#222222"} border-solid focus:outline-none rounded-[3px] bg-transparent pl-4 text-[65%]`}
+                     className={`w-full h-[2.8rem] relative border-[0.5px] border-${
+                        theme ? "#F7F7F8" : "#222222"
+                     } border-solid focus:outline-none rounded-[3px] bg-transparent pl-4 text-[65%]`}
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Password..."
                      ref={passwordref}

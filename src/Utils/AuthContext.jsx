@@ -14,7 +14,11 @@ const AuthContext = ({children}) => {
    const [User, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
    const navigate = useNavigate();
-   const [ModalActive, setModalActive] = useState(false);
+   const [signinModalActive, setsigninModalActive] = useState(false);
+   const [signinerrorModal, setsigninerrorModal] = useState(false);
+   const [signupModalActive, setsignupModalActive] = useState(false);
+   const [signuperrorModalActive, setsignuperrorModalActive] = useState(false);
+
    //
    //
    // USEEFFECT
@@ -41,10 +45,13 @@ const AuthContext = ({children}) => {
          .then((userCredentials) => {
             // console.log(userCredentials);
             // setUser(userCredentials.user);
-            console.log(userCredentials);
+            // console.log(userCredentials);
+            // localforage.setItem("user", userCredentials.user);
+            setsigninModalActive(true);
          })
          .catch((error) => {
-            console.log(error);
+            console.log(error.message);
+            setsigninerrorModal(true);
          });
       setLoading(false);
    };
@@ -57,10 +64,11 @@ const AuthContext = ({children}) => {
          .then((userinfo) => {
             // console.log(userinfo.user);
             setUser(userinfo);
-            alert("account creation was successful, now redirecting u");
+            setsignupModalActive(true);
          })
          .catch((error) => {
             console.log(error);
+            setsignuperrorModalActive(true);
          });
 
       setLoading(false);
@@ -89,8 +97,14 @@ const AuthContext = ({children}) => {
       SignInUser,
       SignUpUser,
       Logout,
-      ModalActive,
-      setModalActive,
+      signinModalActive,
+      setsigninModalActive,
+      signinerrorModal,
+      setsigninerrorModal,
+      signupModalActive,
+      setsignupModalActive,
+      signuperrorModalActive,
+      setsignuperrorModalActive
    };
 
    // RETURN

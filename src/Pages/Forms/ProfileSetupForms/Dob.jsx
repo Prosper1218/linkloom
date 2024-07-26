@@ -28,29 +28,29 @@ const Dob = () => {
             </Link>
          </div>
          <h4
-            className=" [font-family:'Inter-Bold',Helvetica] font-semibold text-[17px] capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
-            style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}
+            className="motserrat font-semibold text-3xl capitalize text-center tracking-[0] leading-[normal] whitespace-nowrap mt-[13rem] pb-4"
+            style={{color: theme === "dark" ? "#F7F7F8" : "#480057"}}
          >
-            let's setup your profile together!
-            <p className="text-xs pt-2" style={{color: theme === "dark" ? "#F7F7F8" : "#480057"}}>
-               tell us your Date of Birth
+            Generating your profile
+            <p className="text-xs pt-2 sora" style={{color: theme === "dark" ? "#F7F7F8" : "#222222"}}>
+               Date of Birth
             </p>
          </h4>
-         <div className="flex justify-center px-5">
+         <div className="flex justify-center px-3">
             <div className=" w-[500px]">
-               <form className="grid gap-0 sm:gap-3 grid-cols-1" ref={dateref}>
+               <form className="grid gap-0 sm:gap-3 grid-cols-1 sora" ref={dateref}>
                   <input
                      type="date"
                      name="date"
                      id="date"
-                     className={`w-full h-9 focus:outline-none bg-transparent pl-4 text-xs mb-3 pr-3`}
+                     className={`w-full h-[2.8rem] rounded-[4px] focus:outline-none bg-transparent pl-4 text-xs mb-3 pr-3`}
                      style={{color: theme === "dark" ? "#F7F7F8" : "#222222", border: theme === "dark" ? "0.5px solid #F7F7F8 " : "0.5px solid #222222 "}}
                      placeholder="Date..."
                      required
                   />
                </form>
-               <button className="float-right h-8 w-24 bg-[#480057] capitalize font-serif text-white text-xs" onClick={handlesubmit}>
-                  next
+               <button className="float-right h-[2.8rem] rounded-[4px] montserrat w-24 bg-[#480057] capitalize font-serif text-white text-xs" onClick={handlesubmit}>
+                  Next
                </button>
             </div>
          </div>
